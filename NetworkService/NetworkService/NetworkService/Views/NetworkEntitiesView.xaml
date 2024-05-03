@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="NetworkService.Views.NetworkEntitiesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetworkService.Views"
+             mc:Ignorable="d" 
+             Width="700" Height="700"
+             >
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="120 20 0 30">
+                
+                    <TextBlock  
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Margin="0 5" 
+                        Text="Add new entity:" 
+                        ></TextBlock>
+                
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock  
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Margin="0 0 13 0" 
+                            Text="Type:"
+                            ></TextBlock>
+                    
+                        <ComboBox 
+                            x:Name="comboBoxEntityType" 
+                            ItemsSource="{Binding ComboBoxItems}" 
+                            SelectedItem="{Binding CurrentEntityType.Type, Mode=TwoWay}" 
+                            Width="120"
+                            Height="30"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Margin="0,0,28,0"/>
+
+                        <Button
+                            x:Name="AddEntityBTN"
+                            Margin="0 0 0 0"
+                            Content="Add entity"
+                            Width="80" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            Command="{Binding AddEntityCommand}"
+                            ></Button>
+                    </StackPanel>
+                
+                    <TextBlock  
+                        Foreground="Red" 
+                        Text="{Binding ErrorMSg}"
+                        
+                        ></TextBlock>
+
+                
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="95 20 0 30">
+                    <TextBlock  
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Margin="0 5" 
+                        Text="Delete entity:" 
+                        ></TextBlock>
+
+                    <Button
+                        x:Name="DeleteEntityBTN"
+                        Margin="0 0 0 0"
+                        Content="Delete entity"
+                        Width="80" 
+                        Height="30" 
+                        HorizontalAlignment="Right"
+                        Command="{Binding DeleteEntityCommand}"
+                        ></Button>
+                    <!--<TextBlock  
+                        Foreground="Red" 
+                        Text="Need To Choose Entity"
+                        ></TextBlock>-->
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="120 0 0 0">
+                <DataGrid 
+                    x:Name="dataGridEntities" 
+                    ItemsSource="{Binding EntitiesToShow}" 
+                    SelectedItem="{Binding SelectedEntity}" 
+                    Background="White" 
+                    Height="300" 
+                    Width="510"
+                    HorizontalAlignment="Left" 
+                    Margin="0,5,0,0" 
+                    RowHeight="20" 
+                    IsReadOnly="True" 
+                    SelectionMode="Single" 
+                    AutoGenerateColumns="False" 
+                    CanUserAddRows="False" 
+                    CanUserReorderColumns="False" 
+                    CanUserResizeColumns="False" 
+                    VerticalScrollBarVisibility="Hidden" 
+                    ScrollViewer.CanContentScroll="False">
+
+                    <DataGrid.Resources>
+
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridCell">
+                                        <Grid>
+                                            <!--Background="{TemplateBinding Background}"-->
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.Resources>
+
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <!-- Podrazumevani stil ćelije -->
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="Black" />
+
+                            <!-- DataTrigger za selektovane ćelije -->
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightBlue" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <!-- Podrazumevani stil reda -->
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="Black" />
+
+                            <!-- Trigger za selektovani red -->
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightBlue" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Type.Type}" Width="*"/>
+                        <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="120 20 0 0">
+                <TextBlock VerticalAlignment="Center" FontWeight="Bold" Text="Search by:" FontSize="20" Margin="0 0 15 0"></TextBlock>
+                <StackPanel Margin="0 0 5 0" Orientation="Vertical" VerticalAlignment="Center">
+                    <RadioButton IsChecked="{Binding IsNameRBSelected, Mode=TwoWay}" x:Name="nameRB" Margin="0 0 10 0">Name</RadioButton>
+                    <RadioButton IsChecked="{Binding IsTypeRBSelected, Mode=TwoWay}" x:Name="typeRB">Type</RadioButton>
+                </StackPanel>
+                <ComboBox ItemsSource="{Binding SearchedHistory}" Text="{Binding SearchBox, Mode=TwoWay}" x:Name="SearchBox" Height="30" Width="170" HorizontalAlignment="Left" IsEditable="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></ComboBox>
+                <Button Command="{Binding SearchEntityCommand}" Height="30" Width="100" HorizontalAlignment="Left" Margin="10 0 0 0">Search</Button>
+            </StackPanel>
+        </StackPanel>         
+    </Grid>
+</UserControl>

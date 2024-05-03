@@ -1,0 +1,52 @@
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe.config
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.pdb
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.AssemblyReference.cache
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.g.cs
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\App.g.cs
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.cache
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.lref
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.baml
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.g.resources
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.Properties.Resources.resources
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.GenerateResource.cache
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.CoreCompileInputs.cache
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\MeasurementGraphView.g.cs
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkDisplayView.g.cs
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkEntitiesView.g.cs
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\MeasurementGraphView.baml
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkDisplayView.baml
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkEntitiesView.baml
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkS.954836E0.Up2Date
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe.config
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.pdb
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.AssemblyReference.cache
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.g.cs
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\MeasurementGraphView.g.cs
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkDisplayView.g.cs
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkEntitiesView.g.cs
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\App.g.cs
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.cache
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.lref
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.baml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\MeasurementGraphView.baml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkDisplayView.baml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkEntitiesView.baml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.g.resources
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.Properties.Resources.resources
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.GenerateResource.cache
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.CoreCompileInputs.cache
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkS.954836E0.Up2Date
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
