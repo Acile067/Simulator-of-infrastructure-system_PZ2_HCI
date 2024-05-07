@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\
 NetworkService
 none
 false
 DEBUG;TRACE
-C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\NetworkService\NetworkService\NetworkService\App.xaml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\App.xaml
 4578528793
 
-19395924449
-15-261508378
+23-387025206
+17-1688629398
 MainWindow.xaml;Views\MeasurementGraphView.xaml;Views\NetworkDisplayView.xaml;Views\NetworkEntitiesView.xaml;
 
-True
+False
 

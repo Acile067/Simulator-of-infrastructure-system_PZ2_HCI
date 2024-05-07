@@ -35,6 +35,34 @@ namespace NetworkService.ViewModel
             createListener(); //Povezivanje sa serverskom aplikacijom
 
             networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChanged;
+
+            networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChangedMeasurementGraphViewModel;
+        }
+
+        private void OnCollectionChangedMeasurementGraphViewModel(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (Entity newEntity in e.NewItems)
+                {
+                    if (!measurementGraphViewModel.EntitiesInList.Contains(newEntity))
+                    {
+                        measurementGraphViewModel.EntitiesInList.Add(newEntity);
+                    }
+                }
+            }
+
+            if (e.OldItems != null)
+            {
+                foreach (Entity oldEntity in e.OldItems)
+                {
+                    if (measurementGraphViewModel.EntitiesInList.Contains(oldEntity))
+                    {
+                        measurementGraphViewModel.EntitiesInList.Remove(oldEntity);
+                    }
+                    
+                }
+            }
         }
 
         private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -130,7 +158,7 @@ namespace NetworkService.ViewModel
 
                             if (File.Exists("Log.txt"))
                             {
-                                File.WriteAllText("Log.txt", "");
+                                File.WriteAllText("Log.txt", String.Empty);
                             }
                             else
                             {
@@ -161,28 +189,7 @@ namespace NetworkService.ViewModel
 
                             }
 
-                            /*string incommingEntityId = incomming.Substring(0, incomming.IndexOf(':'));
-                            double newValue = double.Parse(incomming.Substring(incomming.IndexOf(':') + 1));
-
-                            for (int idx = 0; idx < networkEntitiesViewModel.Entities.Count; idx++)
-                            {
-                                string currentEntityId = $"Entitet_{idx}";
-                                if (currentEntityId == incommingEntityId)
-                                {
-                                    networkEntitiesViewModel.Entities[idx].Value = newValue;
-
-                                    //using (StreamWriter writer = File.AppendText("Log.txt"))
-                                    //{
-                                    //    DateTime dateTime = DateTime.Now;
-                                    //    writer.WriteLine($"{dateTime}: {networkEntitiesViewModel.Entities[idx].Type.Type}, {newValue}");
-                                    //}
-
-                                    //networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[idx]);
-                                    //measurementGraphViewModel.OnShow();
-
-                                    break;
-                                }
-                            }*/
+                            
                         }
                     }, null);
                 }

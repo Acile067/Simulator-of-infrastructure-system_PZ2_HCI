@@ -50,3 +50,7 @@ C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService
 C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkS.954836E0.Up2Date
 C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
 C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome5.dll
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome5.Net.dll
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome5.xml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome5.Net.xml

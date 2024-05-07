@@ -9,7 +9,9 @@
         mc:Ignorable="d"
         Title="Simulator of infrastructure system" Height="800" Width="1400"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Background="#313338"
+        >
     <Window.DataContext>
         <viewModels:MainWindowViewModel/>
     </Window.DataContext>
@@ -37,7 +39,15 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="0 66 0 7.4" Text="Network Display" FontWeight="Bold" FontSize="20" FontStyle="Italic" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock 
+                Foreground="#949BA4" 
+                Margin="0 66 0 7.4" 
+                Text="Network Display" 
+                FontWeight="Bold" 
+                FontSize="20" 
+                FontStyle="Italic" 
+                HorizontalAlignment="Center"
+                ></TextBlock>
             <ContentControl Grid.Row="1" Content="{Binding AlwaysOnViewModel}"/>
         </Grid>
 
@@ -51,15 +61,54 @@
                     FontFamily="Trebuchet MS"
                     DockPanel.Dock="Top" 
                     HorizontalAlignment="Left"  
-                    Background="#FFF">
-                    <MenuItem Margin="0 0 45 0" Background="AliceBlue" Height="50" Command="{Binding NavCommand}" CommandParameter="1_Entities">
+                    Background="#313338">
+                    <MenuItem 
+                        Cursor="Hand" 
+                        Margin="0 0 68 0" 
+                        Height="50" 
+                        Command="{Binding NavCommand}" 
+                        CommandParameter="1_Entities" 
+                        Padding="0">
                         <MenuItem.Header>
-                            <TextBlock FontSize="20" FontWeight="Bold" Text="Network Entities" Width="220" TextAlignment="Center"/>
+                            <!-- Obložite MenuItem.Header sa Border-om -->
+                            <Border Background="#1E1F22" Height="50" Width="220">
+                                <!-- Postavite Clip svojstvo da zaobljava ivice -->
+                                <Border.Clip>
+                                    <RectangleGeometry RadiusX="8" RadiusY="8" Rect="0,0,220,50" />
+                                </Border.Clip>
+                                <TextBlock 
+                                    Foreground="#fff" 
+                                    FontSize="20" 
+                                    FontWeight="Bold" 
+                                    Text="Network Entities" 
+                                    TextAlignment="Center" 
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Center" />
+                            </Border>
                         </MenuItem.Header>
                     </MenuItem>
-                    <MenuItem Background="AliceBlue" Command="{Binding NavCommand}" Height="50" CommandParameter="2_Graph">
+                    <MenuItem 
+                        Cursor="Hand" 
+                        Height="50" 
+                        Command="{Binding NavCommand}" 
+                        CommandParameter="2_Graph" 
+                        Padding="0">
                         <MenuItem.Header>
-                            <TextBlock FontSize="20" FontWeight="Bold" Text="Measurement Graph" Width="220" TextAlignment="Center"/>
+                            <!-- Obložite MenuItem.Header sa Border-om -->
+                            <Border Background="#1E1F22" Height="50" Width="220">
+                                <!-- Postavite Clip svojstvo da zaobljava ivice -->
+                                <Border.Clip>
+                                    <RectangleGeometry RadiusX="8" RadiusY="8" Rect="0,0,220,50" />
+                                </Border.Clip>
+                                <TextBlock 
+                                    Foreground="#fff" 
+                                    FontSize="20" 
+                                    FontWeight="Bold" 
+                                    Text="Measurement Graph" 
+                                    TextAlignment="Center" 
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Center" />
+                            </Border>
                         </MenuItem.Header>
                     </MenuItem>
                 </Menu>

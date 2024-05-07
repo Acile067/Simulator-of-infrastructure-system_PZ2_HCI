@@ -21,6 +21,7 @@ namespace NetworkService.ViewModel
         public BindingList<Entity> EntitiesInList { get; set; }
         public ObservableCollection<Brush> BorderBrushCollection { get; set; }
         public ObservableCollection<Canvas> CanvasCollection { get; set; }
+        public ObservableCollection<MyLine> LineCollection { get; set; }
 
         private Entity selectedEntity;
 
@@ -36,14 +37,22 @@ namespace NetworkService.ViewModel
         public ClassICommand<object> RightMouseButtonDownOnCanvas { get; set; }
         public ClassICommand OrganizeAllCommand { get; set; }
 
+        private bool isLineSourceSelected = false;
+        private int sourceCanvasIndex = -1;
+        private int destinationCanvasIndex = -1;
+        private MyLine currentLine = new MyLine();
+        private Point linePoint1 = new Point();
+        private Point linePoint2 = new Point();
+
         public NetworkDisplayViewModel()
         {
             EntitiesInList = new BindingList<Entity>();
+            LineCollection = new ObservableCollection<MyLine>();
 
             BorderBrushCollection = new ObservableCollection<Brush>();
             for (int i = 0; i < 12; i++)
             {
-                BorderBrushCollection.Add(Brushes.DarkGray);
+                BorderBrushCollection.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22")));
             }
 
             CanvasCollection = new ObservableCollection<Canvas>();
@@ -51,9 +60,12 @@ namespace NetworkService.ViewModel
             {
                 CanvasCollection.Add(new Canvas()
                 {
-                    Background = Brushes.LightGray,
+                    
+                    Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#949BA4")),
                     AllowDrop = true
                 });
+
+
             }
 
             DropEntityOnCanvas = new ClassICommand<object>(OnDrop);
@@ -129,22 +141,22 @@ namespace NetworkService.ViewModel
                     // PREVLACENJE IZ DRUGOG CANVASA
                     if (draggingSourceIndex != -1)
                     {
-                        CanvasCollection[draggingSourceIndex].Background = Brushes.LightGray;
+                        CanvasCollection[draggingSourceIndex].Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#949BA4"));
                         CanvasCollection[draggingSourceIndex].Resources.Remove("taken");
                         CanvasCollection[draggingSourceIndex].Resources.Remove("data");
-                        BorderBrushCollection[draggingSourceIndex] = Brushes.DarkGray;
+                        BorderBrushCollection[draggingSourceIndex] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22"));
 
-                        //UpdateLinesForCanvas(draggingSourceIndex, index);
+                        UpdateLinesForCanvas(draggingSourceIndex, index);
 
                         // Crtanje linije se prekida ako je, izmedju postavljanja tacaka, entitet pomeren na drugo polje
-                        /*if (sourceCanvasIndex != -1)
+                        if (sourceCanvasIndex != -1)
                         {
                             isLineSourceSelected = false;
                             sourceCanvasIndex = -1;
                             linePoint1 = new Point();
                             linePoint2 = new Point();
                             currentLine = new MyLine();
-                        }*/
+                        }
 
                         draggingSourceIndex = -1;
                     }
@@ -192,12 +204,12 @@ namespace NetworkService.ViewModel
 
             if (canvasIndex != -1)
             {
-                CanvasCollection[canvasIndex].Background = Brushes.LightGray;
+                CanvasCollection[canvasIndex].Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#949BA4"));
                 CanvasCollection[canvasIndex].Resources.Remove("taken");
                 CanvasCollection[canvasIndex].Resources.Remove("data");
-                BorderBrushCollection[canvasIndex] = Brushes.DarkGray;
+                BorderBrushCollection[canvasIndex] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22"));
 
-                //DeleteLinesForCanvas(canvasIndex);
+                DeleteLinesForCanvas(canvasIndex);
             }
         }
         private void OnLeftMouseButtonDown(object parameter)
@@ -238,7 +250,7 @@ namespace NetworkService.ViewModel
             if (CanvasCollection[index].Resources["taken"] != null)
             {
                 // Crtanje linije se prekida ako je, izmedju postavljanja tacaka, entitet uklonjen sa canvas-a
-                /*if (sourceCanvasIndex != -1)
+                if (sourceCanvasIndex != -1)
                 {
                     isLineSourceSelected = false;
                     sourceCanvasIndex = -1;
@@ -247,18 +259,173 @@ namespace NetworkService.ViewModel
                     currentLine = new MyLine();
                 }
 
-                DeleteLinesForCanvas(index);*/
+                DeleteLinesForCanvas(index);
 
                 EntitiesInList.Add((Entity)CanvasCollection[index].Resources["data"]);
-                CanvasCollection[index].Background = Brushes.LightGray;
+                CanvasCollection[index].Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#949BA4"));
                 CanvasCollection[index].Resources.Remove("taken");
                 CanvasCollection[index].Resources.Remove("data");
-                BorderBrushCollection[index] = Brushes.DarkGray;
+                BorderBrushCollection[index] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22"));
             }
         }
         private void OnRightMouseButtonDown(object parameter)
         {
+            int index = Convert.ToInt32(parameter);
 
+            if (CanvasCollection[index].Resources["taken"] != null)
+            {
+                if (!isLineSourceSelected)
+                {
+                    sourceCanvasIndex = index;
+
+                    linePoint1 = GetPointForCanvasIndex(sourceCanvasIndex);
+
+                    currentLine.X1 = linePoint1.X;
+                    currentLine.Y1 = linePoint1.Y;
+                    currentLine.Source = sourceCanvasIndex;
+
+                    isLineSourceSelected = true;
+                }
+                else
+                {
+                    destinationCanvasIndex = index;
+
+                    if ((sourceCanvasIndex != destinationCanvasIndex) && !DoesLineAlreadyExist(sourceCanvasIndex, destinationCanvasIndex))
+                    {
+                        linePoint2 = GetPointForCanvasIndex(destinationCanvasIndex);
+
+                        currentLine.X2 = linePoint2.X;
+                        currentLine.Y2 = linePoint2.Y;
+                        currentLine.Destination = destinationCanvasIndex;
+
+                        LineCollection.Add(new MyLine
+                        {
+                            X1 = currentLine.X1,
+                            Y1 = currentLine.Y1,
+                            X2 = currentLine.X2,
+                            Y2 = currentLine.Y2,
+                            Source = currentLine.Source,
+                            Destination = currentLine.Destination
+                        });
+
+                        isLineSourceSelected = false;
+
+                        linePoint1 = new Point();
+                        linePoint2 = new Point();
+                        currentLine = new MyLine();
+                    }
+                    else
+                    {
+                        // Pocetak i kraj linije su u istom canvasu
+
+                        isLineSourceSelected = false;
+
+                        linePoint1 = new Point();
+                        linePoint2 = new Point();
+                        currentLine = new MyLine();
+                    }
+                }
+            }
+            else
+            {
+                // Canvas na koji se postavlja tacka nije zauzet
+
+                isLineSourceSelected = false;
+
+                linePoint1 = new Point();
+                linePoint2 = new Point();
+                currentLine = new MyLine();
+            }
+        }
+
+        private void UpdateLinesForCanvas(int sourceCanvas, int destinationCanvas)
+        {
+            for (int i = 0; i < LineCollection.Count; i++)
+            {
+                if (LineCollection[i].Source == sourceCanvas)
+                {
+                    Point newSourcePoint = GetPointForCanvasIndex(destinationCanvas);
+                    LineCollection[i].X1 = newSourcePoint.X;
+                    LineCollection[i].Y1 = newSourcePoint.Y;
+                    LineCollection[i].Source = destinationCanvas;
+                }
+                else if (LineCollection[i].Destination == sourceCanvas)
+                {
+                    Point newDestinationPoint = GetPointForCanvasIndex(destinationCanvas);
+                    LineCollection[i].X2 = newDestinationPoint.X;
+                    LineCollection[i].Y2 = newDestinationPoint.Y;
+                    LineCollection[i].Destination = destinationCanvas;
+                }
+            }
+        }
+
+        private bool IsCanvasConnected(int canvasIndex)
+        {
+            foreach (MyLine line in LineCollection)
+            {
+                if ((line.Source == canvasIndex) || (line.Destination == canvasIndex))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool DoesLineAlreadyExist(int source, int destination)
+        {
+            foreach (MyLine line in LineCollection)
+            {
+                if ((line.Source == source) && (line.Destination == destination))
+                {
+                    return true;
+                }
+                if ((line.Source == destination) && (line.Destination == source))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void DeleteLinesForCanvas(int canvasIndex)
+        {
+            List<MyLine> linesToDelete = new List<MyLine>();
+
+            for (int i = 0; i < LineCollection.Count; i++)
+            {
+                if ((LineCollection[i].Source == canvasIndex) || (LineCollection[i].Destination == canvasIndex))
+                {
+                    linesToDelete.Add(LineCollection[i]);
+                }
+            }
+
+            foreach (MyLine line in linesToDelete)
+            {
+                LineCollection.Remove(line);
+            }
+        }
+
+        // Centralna tacka na Canvas kontroli
+        private Point GetPointForCanvasIndex(int canvasIndex)
+        {
+            double x = 0, y = 0;
+
+            for (int row = 0; row <= 3; row++)
+            {
+                for (int col = 0; col <= 2; col++)
+                {
+                    int currentIndex = row * 3 + col;
+
+                    if (canvasIndex == currentIndex)
+                    {
+                        x = 50 + (col*135);
+                        y = 50 + (row*135);
+
+                        break;
+                    }
+                }
+            }
+            return new Point(x, y);
         }
 
         public Entity SelectedEntity

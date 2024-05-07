@@ -30,3 +30,19 @@ C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\MeteringSimula
 C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.csproj.CoreCompileInputs.cache
 C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.exe
 C:\Users\acile\Desktop\Simulator_infrastrukturnog_sistema_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.pdb
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\bin\Debug\MeteringSimulator.exe.config
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\bin\Debug\MeteringSimulator.exe
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\bin\Debug\MeteringSimulator.pdb
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.csproj.AssemblyReference.cache
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MainWindow.g.cs
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\App.g.cs
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator_MarkupCompile.cache
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator_MarkupCompile.lref
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\App.baml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MainWindow.baml
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.g.resources
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.Properties.Resources.resources
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.csproj.GenerateResource.cache
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.csproj.CoreCompileInputs.cache
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.exe
+C:\Users\acile\Desktop\Simulator of infrastructure system_PZ2_HCI\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.pdb

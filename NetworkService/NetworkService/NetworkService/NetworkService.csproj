@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome5, Version=2.1.11.0, Culture=neutral, PublicKeyToken=9cfaf01297a008f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome5.2.1.11\lib\net472\FontAwesome5.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome5.Net, Version=2.1.11.0, Culture=neutral, PublicKeyToken=9cfaf01297a008f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome5.2.1.11\lib\net472\FontAwesome5.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.77\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -61,8 +67,12 @@
     </ApplicationDefinition>
     <Compile Include="ClassICommand.cs" />
     <Compile Include="ClassINotifyPropertyChanged.cs" />
+    <Compile Include="Model\CircleMarker.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\EntityType.cs" />
+    <Compile Include="Model\LogParser.cs" />
+    <Compile Include="Model\Measurement.cs" />
+    <Compile Include="Model\MyLine.cs" />
     <Compile Include="Validation.cs" />
     <Compile Include="ValidationErrors.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -134,10 +144,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Screenshot_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Screenshot_6.png" />
+    <Resource Include="Images\RTD.png" />
+    <Resource Include="Images\TERMOSPREGA.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

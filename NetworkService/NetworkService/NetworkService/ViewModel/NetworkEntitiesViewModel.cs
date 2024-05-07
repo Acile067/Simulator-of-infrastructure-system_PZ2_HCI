@@ -21,12 +21,13 @@ namespace NetworkService.ViewModel
             "RTD",
             "TermoSprega",
         };
-    public ObservableCollection<Entity> EntitiesToShow { get; set; }
+        public ObservableCollection<Entity> EntitiesToShow { get; set; }
         public ObservableCollection<Entity> Entities { get; set; }
         public ObservableCollection<Entity> EntitiesSearched { get; set; }
         public ClassICommand AddEntityCommand { get; set; }
         public ClassICommand DeleteEntityCommand { get; set; }
         public ClassICommand SearchEntityCommand { get; set; }
+        public ClassICommand RefreshEntityCommand { get; set; }
 
 
         // Unos novog entiteta
@@ -49,7 +50,23 @@ namespace NetworkService.ViewModel
             AddEntityCommand = new ClassICommand(OnAdd);
             DeleteEntityCommand = new ClassICommand(OnDelete, CanDelete);
             SearchEntityCommand = new ClassICommand(onSearch);
+            RefreshEntityCommand = new ClassICommand(onRefresh);
         }
+
+        private void onRefresh()
+        {
+            if(EntitiesToShow != Entities)
+            {
+                EntitiesToShow = Entities;
+                OnPropertyChanged("EntitiesToShow");
+            }      
+        }
+
+        public List<string> GetEntityNames()
+        {
+            return Entities.Select(entity => entity.Name).ToList();
+        }
+
         #region SearchBTN
 
         public List<string> SearchedHistory
@@ -95,56 +112,68 @@ namespace NetworkService.ViewModel
         private void onSearch()
         {
             EntitiesSearched.Clear();
-
-            if (IsTypeRBSelected)
+            try
             {
-                if(SearchBox.Trim() == "")
+                if (IsTypeRBSelected)
                 {
-                    EntitiesToShow = Entities;
-                    OnPropertyChanged("EntitiesToShow");
+                    if (SearchBox.Trim() == "")
+                    {
+                        if (EntitiesToShow != Entities)
+                        {
+                            EntitiesToShow = Entities;
+                            OnPropertyChanged("EntitiesToShow");
+                        }
+                    }
+                    else
+                    {
+                        foreach (var entity in Entities)
+                        {
+                            if (entity.Type.Type.Contains(SearchBox))
+                            {
+                                EntitiesSearched.Add(entity);
+                            }
+                        }
+                        EntitiesToShow = EntitiesSearched;
+                        OnPropertyChanged("EntitiesToShow");
+                        if (!SearchedHistory.Contains(SearchBox))
+                        {
+                            SearchedHistory.Add(SearchBox);
+                            OnPropertyChanged("SearchedHistory");
+                        }
+                    }
                 }
                 else
                 {
-                    foreach (var entity in Entities)
+                    if (SearchBox.Trim() == "")
                     {
-                        if (entity.Type.Type.Contains(SearchBox))
+                        if (EntitiesToShow != Entities)
                         {
-                            EntitiesSearched.Add(entity);
+                            EntitiesToShow = Entities;
+                            OnPropertyChanged("EntitiesToShow");
                         }
                     }
-                    EntitiesToShow = EntitiesSearched;
-                    OnPropertyChanged("EntitiesToShow");
-                    if (!SearchedHistory.Contains(SearchBox))
+                    else
                     {
-                        SearchedHistory.Add(SearchBox);
-                        OnPropertyChanged("SearchedHistory");
+                        foreach (var entity in Entities)
+                        {
+                            if (entity.Name.Contains(SearchBox))
+                            {
+                                EntitiesSearched.Add(entity);
+                            }
+                        }
+                        EntitiesToShow = EntitiesSearched;
+                        OnPropertyChanged("EntitiesToShow");
+                        if (!SearchedHistory.Contains(SearchBox))
+                        {
+                            SearchedHistory.Add(SearchBox);
+                            OnPropertyChanged("SearchedHistory");
+                        }
                     }
-                }      
+                }
             }
-            else
+            catch (Exception ex)
             {
-                if (SearchBox.Trim() == "")
-                {
-                    EntitiesToShow = Entities;
-                    OnPropertyChanged("EntitiesToShow");
-                }
-                else
-                {
-                    foreach (var entity in Entities)
-                    {
-                        if (entity.Name.Contains(SearchBox))
-                        {
-                            EntitiesSearched.Add(entity);
-                        }
-                    }
-                    EntitiesToShow = EntitiesSearched;
-                    OnPropertyChanged("EntitiesToShow");
-                    if (!SearchedHistory.Contains(SearchBox))
-                    {
-                        SearchedHistory.Add(SearchBox);
-                        OnPropertyChanged("SearchedHistory");
-                    }
-                }
+                Console.WriteLine(ex.ToString());
             }
         }
 
@@ -217,11 +246,11 @@ namespace NetworkService.ViewModel
             }
             else if(CurrentEntityType.Type == "RTD")
             {
-                imgPath = "pack://application:,,,/NetworkService;component/Images/Screenshot_4.png";
+                imgPath = "pack://application:,,,/NetworkService;component/Images/RTD.png";
             }
             else
             {
-                imgPath = "pack://application:,,,/NetworkService;component/Images/Screenshot_6.png";
+                imgPath = "pack://application:,,,/NetworkService;component/Images/TERMOSPREGA.png";
             }
             ErrorMSg = "";
 

@@ -11,8 +11,8 @@
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="130 20 70 20">
                 <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Entity:" Margin="0 0 15 0 "></TextBlock>
-                <ComboBox Width="120" Height="30" Margin="0 0 15 0 "></ComboBox>
-                <Button Height="30" Width="100" Content="Show"></Button>
+                <ComboBox Width="120" Height="30" ItemsSource="{Binding ComboBoxItems}" SelectedItem="{Binding SelectedEntity}" Margin="0 0 15 0 " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+                <Button Height="30" Width="100" Content="Show" Command="{Binding ShowCommand}"></Button>
             </StackPanel>
             <Canvas Background="Gray" Margin="130 0 70 0" Height="475">
                 <Grid Name="Column1" Background="LightGray" Width="80" Height="475" Margin="20,0,0,0">

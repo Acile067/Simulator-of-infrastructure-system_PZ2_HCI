@@ -2,11 +2,33 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fa5 ="http://schemas.fontawesome.com/icons/"
              xmlns:local="clr-namespace:NetworkService.Views"
              mc:Ignorable="d" 
              Width="700" Height="700"
              >
+    <UserControl.Resources>
+        <ControlTemplate x:Key="RoundedButtonTemplate" TargetType="Button">
+            <Border x:Name="buttonBorder" CornerRadius="3" Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="LightBlue" />
+                </Trigger>
+
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="buttonBorder" Property="Background" Value="Gray" />
+                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="DarkGray" />
+                    <Setter Property="Opacity" Value="0.5" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
@@ -16,7 +38,8 @@
                         FontSize="20"
                         FontWeight="Bold"
                         Margin="0 5" 
-                        Text="Add new entity:" 
+                        Text="Add new entity:"
+                        Foreground="#949BA4"
                         ></TextBlock>
                 
                     <StackPanel Orientation="Horizontal" >
@@ -25,6 +48,7 @@
                             FontSize="20"
                             Margin="0 0 13 0" 
                             Text="Type:"
+                            Foreground="#949BA4"
                             ></TextBlock>
                     
                         <ComboBox 
@@ -40,18 +64,23 @@
                         <Button
                             x:Name="AddEntityBTN"
                             Margin="0 0 0 0"
+                            Cursor="Hand"
                             Content="Add entity"
+                            FontWeight="Bold"
                             Width="80" 
-                            Height="30" 
+                            Height="30"
+                            Foreground="#fff"
+                            Background="#1E1F22"
+                            BorderBrush="Black"
                             HorizontalAlignment="Left"
                             Command="{Binding AddEntityCommand}"
+                            Template="{StaticResource RoundedButtonTemplate}" 
                             ></Button>
                     </StackPanel>
                 
                     <TextBlock  
                         Foreground="Red" 
                         Text="{Binding ErrorMSg}"
-                        
                         ></TextBlock>
 
                 
@@ -62,21 +91,24 @@
                         FontWeight="Bold"
                         Margin="0 5" 
                         Text="Delete entity:" 
+                        Foreground="#949BA4"
                         ></TextBlock>
 
                     <Button
                         x:Name="DeleteEntityBTN"
                         Margin="0 0 0 0"
                         Content="Delete entity"
+                        FontWeight="Bold"
+                        Cursor="Hand"
                         Width="80" 
                         Height="30" 
                         HorizontalAlignment="Right"
                         Command="{Binding DeleteEntityCommand}"
+                        Template="{StaticResource RoundedButtonTemplate}"
+                        Foreground="#fff"
+                        Background="#1E1F22"
+                        BorderBrush="Black"
                         ></Button>
-                    <!--<TextBlock  
-                        Foreground="Red" 
-                        Text="Need To Choose Entity"
-                        ></TextBlock>-->
                 </StackPanel>
             </StackPanel>
 
@@ -85,7 +117,9 @@
                     x:Name="dataGridEntities" 
                     ItemsSource="{Binding EntitiesToShow}" 
                     SelectedItem="{Binding SelectedEntity}" 
-                    Background="White" 
+                    Background="#212326"
+                    BorderBrush="#000"
+                    BorderThickness="1"
                     Height="300" 
                     Width="510"
                     HorizontalAlignment="Left" 
@@ -104,6 +138,10 @@
 
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="#B5BAC1"/>
+                            <Setter Property="Height" Value="20"/>
+                            <Setter Property="BorderBrush" Value="#000" />
+                            <Setter Property="BorderThickness" Value="1" />
                         </Style>
 
                         <Style TargetType="DataGridCell">
@@ -111,7 +149,7 @@
                                 <Setter.Value>
                                     <ControlTemplate TargetType="DataGridCell">
                                         <Grid>
-                                            <!--Background="{TemplateBinding Background}"-->
+                                            
                                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </ControlTemplate>
@@ -123,8 +161,10 @@
                     <DataGrid.CellStyle>
                         <Style TargetType="DataGridCell">
                             <!-- Podrazumevani stil ćelije -->
-                            <Setter Property="Background" Value="White" />
-                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="Background" Value="#212326" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="BorderBrush" Value="#000" />
+                            <Setter Property="BorderThickness" Value="1" />
 
                             <!-- DataTrigger za selektovane ćelije -->
                             <Style.Triggers>
@@ -163,13 +203,68 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="120 20 0 0">
-                <TextBlock VerticalAlignment="Center" FontWeight="Bold" Text="Search by:" FontSize="20" Margin="0 0 15 0"></TextBlock>
+                <TextBlock 
+                    VerticalAlignment="Center" 
+                    FontWeight="Bold" 
+                    Text="Search by:" 
+                    FontSize="20"
+                    Margin="0 0 15 0"
+                    Foreground="#949BA4"
+                    ></TextBlock>
                 <StackPanel Margin="0 0 5 0" Orientation="Vertical" VerticalAlignment="Center">
-                    <RadioButton IsChecked="{Binding IsNameRBSelected, Mode=TwoWay}" x:Name="nameRB" Margin="0 0 10 0">Name</RadioButton>
-                    <RadioButton IsChecked="{Binding IsTypeRBSelected, Mode=TwoWay}" x:Name="typeRB">Type</RadioButton>
+                    <RadioButton 
+                        Foreground="#949BA4"
+                        IsChecked="{Binding IsNameRBSelected, Mode=TwoWay}" 
+                        x:Name="nameRB"
+                        Margin="0 0 10 0"
+                        >Name</RadioButton>
+                    <RadioButton 
+                        Foreground="#949BA4" 
+                        IsChecked="{Binding IsTypeRBSelected, Mode=TwoWay}" 
+                        x:Name="typeRB"
+                        >Type</RadioButton>
                 </StackPanel>
-                <ComboBox ItemsSource="{Binding SearchedHistory}" Text="{Binding SearchBox, Mode=TwoWay}" x:Name="SearchBox" Height="30" Width="170" HorizontalAlignment="Left" IsEditable="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></ComboBox>
-                <Button Command="{Binding SearchEntityCommand}" Height="30" Width="100" HorizontalAlignment="Left" Margin="10 0 0 0">Search</Button>
+                <ComboBox 
+                    ItemsSource="{Binding SearchedHistory}" 
+                    Text="{Binding SearchBox, Mode=TwoWay}" 
+                    x:Name="SearchBox" Height="30" 
+                    Width="170" HorizontalAlignment="Left" 
+                    IsEditable="True" 
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    ></ComboBox>
+                <Button 
+                    Command="{Binding SearchEntityCommand}" 
+                    Height="30"
+                    FontWeight="Bold"
+                    Cursor="Hand"
+                    Width="100" 
+                    HorizontalAlignment="Left" 
+                    Margin="10 0 0 0" 
+                    Template="{StaticResource RoundedButtonTemplate}" 
+                    Content="Search"
+                    Foreground="#fff"
+                    Background="#1E1F22"
+                    BorderBrush="Black"
+                    ></Button>
+                <Button 
+                    Command="{Binding RefreshEntityCommand}" 
+                    Height="30" 
+                    Width="43"
+                    Cursor="Hand"
+                    HorizontalAlignment="Left" 
+                    Foreground="#fff"
+                    Background="#1E1F22"
+                    BorderBrush="Black"
+                    Margin="10 0 0 0" 
+                    Template="{StaticResource RoundedButtonTemplate}" >
+                    <fa5:SvgAwesome
+                        Height="15"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="#fff"
+                        Icon="Solid_Retweet"/>
+                </Button>
             </StackPanel>
         </StackPanel>         
     </Grid>
