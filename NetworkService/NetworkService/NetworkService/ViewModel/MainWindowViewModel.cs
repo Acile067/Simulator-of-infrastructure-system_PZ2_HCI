@@ -181,7 +181,7 @@ namespace NetworkService.ViewModel
                                 var splited = incomming.Split(':');
                                 DateTime dt = DateTime.Now;
                                 using (StreamWriter sw = File.AppendText("Log.txt"))
-                                    sw.WriteLine(dt + ": " + splited[0] + ", " + splited[1]);
+                                    sw.WriteLine(dt + "; " + splited[0] + ", " + splited[1]);
 
                                 int id = Int32.Parse(splited[0].Split('_')[1]);
                                 networkEntitiesViewModel.Entities[id].Value = Double.Parse(splited[1]);

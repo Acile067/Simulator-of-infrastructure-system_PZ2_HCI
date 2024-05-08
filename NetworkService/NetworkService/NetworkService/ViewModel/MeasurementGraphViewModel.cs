@@ -86,16 +86,28 @@ namespace NetworkService.ViewModel
 
         public void UpdateValue()
         {
+            int keyCount = 0;
+            foreach (var entity in EntitiesInList) 
+            { 
+                if(entity.Name == SelectedEntityToShow)
+                {
+                    break;
+                }
+                keyCount++;
+            }
+
             foreach (var item in MesuresDict.Keys)
-            {
-                if (item == SelectedEntityToShow)
+            {                
+                string customKey = $"Entity_{keyCount}";
+
+                if (item == customKey)
                 {
                     List<Measurement> list = new List<Measurement>();
                     list = MesuresDict[item];
                     int br = 0;
                     foreach (Measurement measurement in list)
                     {
-                        CircleMarker cm = new CircleMarker(measurement.Value, measurement.Time, "bbb");
+                        CircleMarker cm = new CircleMarker(measurement.Value, measurement.Date, measurement.Time);
 
                         CircleMarkers[br++] = cm;
                         if (br == 5)
@@ -114,18 +126,13 @@ namespace NetworkService.ViewModel
             if (poslednjaLinija != null)
             {
                 // Parsirajte poslednju liniju
-                (string datum, string entitet, int vrednost) = ParsirajLiniju(poslednjaLinija);
+                (string datum, string vreme, string entitet, int vrednost) = ParsirajLiniju(poslednjaLinija);
                 string[] delovi = entitet.Split('_');
                 int brojEntiteta = int.Parse(delovi[1]);
                 // Ispišite rezultate
-                //MessageBox.Show($"{datum} {entitet} {vrednost} {brojEntiteta}");
-                bool validno = false;
-                if (vrednost > 250 || vrednost < 350)
-                {
-                    validno = true;
-                }
-
-                Measurement measurement = new Measurement(datum, vrednost, validno);
+                //MessageBox.Show($"{datum} {entitet} {vrednost} {brojEntiteta} {vreme}");
+                
+                Measurement measurement = new Measurement(datum,vreme, vrednost);
                 string key = $"Entity_{brojEntiteta}";
 
                 if (MesuresDict.ContainsKey(key))
@@ -165,23 +172,24 @@ namespace NetworkService.ViewModel
                 return poslednjaLinija;
             }
         }
-        static (string, string, int) ParsirajLiniju(string linija)
+        static (string datum, string vreme, string entitet, int vrednost) ParsirajLiniju(string linija)
         {
-            string[] delovi = linija.Split(new[] { ':' }, 2);
+            // Podelite liniju koristeći tačku-zarez (`;`) kao separator
+            string[] delovi = linija.Split(';');
 
-            // Prvi deo je datum i vreme (kao deo `delovi[0]`)
-            string datumVremeDeo = delovi[0];
+            // Prvi deo (datum i vreme) je prvi element niza `delovi`
+            string datumVremeDeo = delovi[0].Trim();
 
-            // Podelite datum i vreme koristeći razmak kao separator
+            // Podelite datum i vreme koristeći razmak (` `) kao separator
             string[] datumVremeDelovi = datumVremeDeo.Split(' ');
             string datum = datumVremeDelovi[0];
             string vreme = datumVremeDelovi[1];
 
-            // Kombinujte datum i vreme u željeni format
-            string datumVreme = $"{datum} {vreme}";
+            // Drugi deo (entitet i vrednost) je drugi element niza `delovi`
+            string ostatak = delovi[1].Trim();
 
-            // Drugi deo je ostatak linije, razdvajamo ga po zarezu (,)
-            string[] ostatakDelovi = delovi[1].Split(',');
+            // Podelite ostatak koristeći zarez (`,`) kao separator
+            string[] ostatakDelovi = ostatak.Split(',');
 
             // Entitet je prvi deo ostatka
             string entitet = ostatakDelovi[0].Trim();
@@ -189,7 +197,8 @@ namespace NetworkService.ViewModel
             // Vrednost je drugi deo ostatka
             int vrednost = int.Parse(ostatakDelovi[1].Trim());
 
-            return (datumVreme, entitet, vrednost);
+            // Vraća tuple sa razdvojenim datumom, vremenom, entitetom i vrednošću
+            return (datum, vreme, entitet, vrednost);
         }
         private bool CanShow()
         {
