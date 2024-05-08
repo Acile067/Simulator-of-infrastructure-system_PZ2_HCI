@@ -9,22 +9,42 @@
              Width="700" Height="700"
              >
     <UserControl.Resources>
-        <ControlTemplate x:Key="RoundedButtonTemplate" TargetType="Button">
-            <Border x:Name="buttonBorder" CornerRadius="3" Background="{TemplateBinding Background}" 
+        <ControlTemplate 
+            x:Key="RoundedButtonTemplate" 
+            TargetType="Button">
+            <Border 
+                x:Name="buttonBorder"
+                CornerRadius="3" 
+                Background="{TemplateBinding Background}" 
                 BorderBrush="{TemplateBinding BorderBrush}" 
                 BorderThickness="{TemplateBinding BorderThickness}">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <ContentPresenter 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" />
             </Border>
-
             <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="LightBlue" />
+                <Trigger 
+                    Property="IsMouseOver" 
+                    Value="true">
+                    <Setter 
+                        TargetName="buttonBorder"
+                        Property="BorderBrush"
+                        Value="LightBlue" />
                 </Trigger>
-
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="buttonBorder" Property="Background" Value="Gray" />
-                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="DarkGray" />
-                    <Setter Property="Opacity" Value="0.5" />
+                <Trigger 
+                    Property="IsEnabled" 
+                    Value="False">
+                    <Setter 
+                        TargetName="buttonBorder"
+                        Property="Background" 
+                        Value="Gray" />
+                    <Setter 
+                        TargetName="buttonBorder"
+                        Property="BorderBrush"
+                        Value="DarkGray" />
+                    <Setter 
+                        Property="Opacity" 
+                        Value="0.5" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -32,8 +52,9 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical" Margin="120 20 0 30">
-                
+                <StackPanel 
+                    Orientation="Vertical" 
+                    Margin="120 20 0 30">
                     <TextBlock  
                         FontSize="20"
                         FontWeight="Bold"
@@ -41,8 +62,8 @@
                         Text="Add new entity:"
                         Foreground="#949BA4"
                         ></TextBlock>
-                
-                    <StackPanel Orientation="Horizontal" >
+                    <StackPanel 
+                        Orientation="Horizontal" >
                         <TextBlock  
                             VerticalAlignment="Center"
                             FontSize="20"
@@ -50,7 +71,6 @@
                             Text="Type:"
                             Foreground="#949BA4"
                             ></TextBlock>
-                    
                         <ComboBox
                             x:Name="comboBoxEntityType" 
                             ItemsSource="{Binding ComboBoxItems}" 
@@ -61,7 +81,6 @@
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             Margin="0,0,28,0"/>
-
                         <Button
                             x:Name="AddEntityBTN"
                             Margin="0 0 0 0"
@@ -78,13 +97,10 @@
                             Template="{StaticResource RoundedButtonTemplate}" 
                             ></Button>
                     </StackPanel>
-                
                     <TextBlock  
                         Foreground="Red" 
                         Text="{Binding ErrorMSg}"
                         ></TextBlock>
-
-                
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="95 20 0 30">
                     <TextBlock  
@@ -94,7 +110,6 @@
                         Text="Delete entity:" 
                         Foreground="#949BA4"
                         ></TextBlock>
-
                     <Button
                         x:Name="DeleteEntityBTN"
                         Margin="0 0 0 0"
@@ -112,8 +127,9 @@
                         ></Button>
                 </StackPanel>
             </StackPanel>
-
-            <StackPanel Orientation="Vertical" Margin="120 0 0 0">
+            <StackPanel 
+                Orientation="Vertical" 
+                Margin="120 0 0 0">
                 <DataGrid 
                     x:Name="dataGridEntities" 
                     ItemsSource="{Binding EntitiesToShow}" 
@@ -136,7 +152,6 @@
                     ScrollViewer.CanContentScroll="False">
 
                     <DataGrid.Resources>
-
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                             <Setter Property="Background" Value="#B5BAC1"/>
@@ -144,46 +159,38 @@
                             <Setter Property="BorderBrush" Value="#000" />
                             <Setter Property="BorderThickness" Value="1" />
                         </Style>
-
                         <Style TargetType="DataGridCell">
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="DataGridCell">
                                         <Grid>
-                                            
-                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <ContentPresenter 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
                                         </Grid>
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
                         </Style>
                     </DataGrid.Resources>
-
                     <DataGrid.CellStyle>
                         <Style TargetType="DataGridCell">
-                            <!-- Podrazumevani stil ćelije -->
                             <Setter Property="Background" Value="#212326" />
                             <Setter Property="Foreground" Value="White" />
                             <Setter Property="BorderBrush" Value="#000" />
                             <Setter Property="BorderThickness" Value="1" />
-
-                            <!-- DataTrigger za selektovane ćelije -->
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter Property="Background" Value="LightBlue" />
                                     <Setter Property="Foreground" Value="Black" />
                                 </Trigger>
-
                             </Style.Triggers>
                         </Style>
                     </DataGrid.CellStyle>
                     <DataGrid.RowStyle>
                         <Style TargetType="DataGridRow">
-                            <!-- Podrazumevani stil reda -->
                             <Setter Property="Background" Value="White" />
                             <Setter Property="Foreground" Value="Black" />
-
-                            <!-- Trigger za selektovani red -->
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter Property="Background" Value="LightBlue" />
@@ -192,8 +199,6 @@
                             </Style.Triggers>
                         </Style>
                     </DataGrid.RowStyle>
-
-
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
@@ -202,8 +207,9 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Margin="120 20 0 0">
+            <StackPanel 
+                Orientation="Horizontal" 
+                Margin="120 20 0 0">
                 <TextBlock 
                     VerticalAlignment="Center" 
                     FontWeight="Bold" 
@@ -212,7 +218,10 @@
                     Margin="0 0 15 0"
                     Foreground="#949BA4"
                     ></TextBlock>
-                <StackPanel Margin="0 0 5 0" Orientation="Vertical" VerticalAlignment="Center">
+                <StackPanel 
+                    Margin="0 0 5 0"
+                    Orientation="Vertical"
+                    VerticalAlignment="Center">
                     <RadioButton 
                         Foreground="#949BA4"
                         IsChecked="{Binding IsNameRBSelected, Mode=TwoWay}" 
@@ -230,8 +239,10 @@
                 <ComboBox 
                     ItemsSource="{Binding SearchedHistory}" 
                     Text="{Binding SearchBox, Mode=TwoWay}" 
-                    x:Name="SearchBox" Height="30" 
-                    Width="170" HorizontalAlignment="Left" 
+                    x:Name="SearchBox" 
+                    Height="30" 
+                    Width="170" 
+                    HorizontalAlignment="Left" 
                     IsEditable="True" 
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"

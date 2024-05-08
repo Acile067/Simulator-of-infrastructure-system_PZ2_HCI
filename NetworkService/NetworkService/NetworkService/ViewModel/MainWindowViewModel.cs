@@ -14,7 +14,6 @@ namespace NetworkService.ViewModel
 {
     public class MainWindowViewModel : ClassINotifyPropertyChanged
     {
-
         public ClassICommand<string> NavCommand { get; private set; }
 
         private NetworkEntitiesViewModel networkEntitiesViewModel = new NetworkEntitiesViewModel();
@@ -38,7 +37,6 @@ namespace NetworkService.ViewModel
 
             networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChangedMeasurementGraphViewModel;
         }
-
         private void OnCollectionChangedMeasurementGraphViewModel(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -51,7 +49,6 @@ namespace NetworkService.ViewModel
                     }
                 }
             }
-
             if (e.OldItems != null)
             {
                 foreach (Entity oldEntity in e.OldItems)
@@ -60,11 +57,9 @@ namespace NetworkService.ViewModel
                     {
                         measurementGraphViewModel.EntitiesInList.Remove(oldEntity);
                     }
-                    
                 }
             }
         }
-
         private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
            if (e.NewItems != null)
@@ -77,7 +72,6 @@ namespace NetworkService.ViewModel
                     }
                 }
             }
-
             if (e.OldItems != null)
             {
                 foreach (Entity oldEntity in e.OldItems)
@@ -94,7 +88,6 @@ namespace NetworkService.ViewModel
                 }
             }
         }
-
         public ClassINotifyPropertyChanged CurrentViewModel
         {
             get { return currentViewModel; }
@@ -111,7 +104,6 @@ namespace NetworkService.ViewModel
                 SetProperty(ref alwaysOnViewModel, value);
             }
         }
-
         private void OnNav(string destination)
         {
             switch (destination)
@@ -124,7 +116,6 @@ namespace NetworkService.ViewModel
                     break;
             }
         }
-
         private void createListener()
         {
             var tcp = new TcpListener(IPAddress.Any, 25565);
@@ -163,12 +154,10 @@ namespace NetworkService.ViewModel
                             else
                             {
                                 File.Create("Log.txt");
-                            }
-                            
+                            }                     
                         }
                         else
                         {
-                            
                             //U suprotnom, server je poslao promenu stanja nekog objekta u sistemu
                             Console.WriteLine(incomming); //Na primer: "Entitet_1:272"
 
@@ -185,17 +174,14 @@ namespace NetworkService.ViewModel
 
                                 int id = Int32.Parse(splited[0].Split('_')[1]);
                                 networkEntitiesViewModel.Entities[id].Value = Double.Parse(splited[1]);
+
                                 networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
-
                                 measurementGraphViewModel.AutoShow();
-                            }
-
-                            
+                            }    
                         }
                     }, null);
                 }
             });
-
             listeningThread.IsBackground = true;
             listeningThread.Start();
         }

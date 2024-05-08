@@ -16,8 +16,7 @@ namespace NetworkService.Model
         {
             Time = time;
             Date = date;
-            Value = value;
-            
+            Value = value;      
         }
     }
 }

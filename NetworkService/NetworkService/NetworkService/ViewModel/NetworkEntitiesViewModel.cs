@@ -14,6 +14,7 @@ namespace NetworkService.ViewModel
 {
     public class NetworkEntitiesViewModel : ClassINotifyPropertyChanged
     {
+        #region Initialize
         private int _id = 0;
         private string errorMSg = "";
         public List<string> ComboBoxItems { get; set; } = new List<string>()
@@ -24,23 +25,22 @@ namespace NetworkService.ViewModel
         public ObservableCollection<Entity> EntitiesToShow { get; set; }
         public ObservableCollection<Entity> Entities { get; set; }
         public ObservableCollection<Entity> EntitiesSearched { get; set; }
+        private ObservableCollection<string> searchedHistory = new ObservableCollection<string>();
         public ClassICommand AddEntityCommand { get; set; }
         public ClassICommand DeleteEntityCommand { get; set; }
         public ClassICommand SearchEntityCommand { get; set; }
         public ClassICommand RefreshEntityCommand { get; set; }
 
-
-        // Unos novog entiteta
+        // For add entity
         private Entity currentEntity = new Entity();
         private EntityType currentEntityType = new EntityType();
-        // Entitet selektovan u datagridu
+        // Entity selected in table
         private Entity selectedEntity;
         //Search
         private string searchBox;
         private bool isTypeRBSelected;
         private bool isNameRBSelected = true;
-        private ObservableCollection<string> searchedHistory = new ObservableCollection<string>();
-
+        
         public NetworkEntitiesViewModel()
         {
             Entities = new ObservableCollection<Entity>();
@@ -52,7 +52,9 @@ namespace NetworkService.ViewModel
             SearchEntityCommand = new ClassICommand(onSearch);
             RefreshEntityCommand = new ClassICommand(onRefresh);
         }
+        #endregion
 
+        #region Refresh
         private void onRefresh()
         {
             if(EntitiesToShow != Entities)
@@ -61,11 +63,7 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged("EntitiesToShow");
             }      
         }
-
-        public List<string> GetEntityNames()
-        {
-            return Entities.Select(entity => entity.Name).ToList();
-        }
+        #endregion
 
         #region SearchBTN
 
@@ -177,7 +175,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
         #endregion
 
         #region DeletEntityBTN
@@ -253,7 +250,6 @@ namespace NetworkService.ViewModel
                 imgPath = "pack://application:,,,/NetworkService;component/Images/TERMOSPREGA.png";
             }
             ErrorMSg = "";
-
             try
             {
                 Entities.Add(new Entity() 

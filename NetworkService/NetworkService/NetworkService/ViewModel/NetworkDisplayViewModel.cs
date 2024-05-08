@@ -19,6 +19,7 @@ namespace NetworkService.ViewModel
 {
     public class NetworkDisplayViewModel : ClassINotifyPropertyChanged
     {
+        #region Initialize
         public BindingList<Entity> EntitiesInList { get; set; }
         public ObservableCollection<Brush> BorderBrushCollection { get; set; }
         public ObservableCollection<Canvas> CanvasCollection { get; set; }
@@ -50,26 +51,20 @@ namespace NetworkService.ViewModel
         {
             EntitiesInList = new BindingList<Entity>();
             LineCollection = new ObservableCollection<MyLine>();
-
+            CanvasCollection = new ObservableCollection<Canvas>();
             BorderBrushCollection = new ObservableCollection<Brush>();
+            DescriptionCollection = new ObservableCollection<string>();
+            
             for (int i = 0; i < 12; i++)
             {
                 BorderBrushCollection.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22")));
-            }
 
-            CanvasCollection = new ObservableCollection<Canvas>();
-            for (int i = 0; i < 12; i++)
-            {
                 CanvasCollection.Add(new Canvas()
                 {
-                    
                     Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#949BA4")),
                     AllowDrop = true
                 });
-            }
-            DescriptionCollection = new ObservableCollection<string>();
-            for(int i = 0; i < 12; i++)
-            {
+
                 DescriptionCollection.Add(" ");
             }
 
@@ -82,7 +77,9 @@ namespace NetworkService.ViewModel
             OrganizeAllCommand = new ClassICommand(onOrganize);
 
         }
+        #endregion
 
+        #region OrganizeBTN
         private void onOrganize()
         {
             List<Entity> addedEntities = new List<Entity>();
@@ -103,7 +100,7 @@ namespace NetworkService.ViewModel
                             CanvasCollection[index].Background = new ImageBrush(logo);
                             CanvasCollection[index].Resources.Add("taken", true);
                             CanvasCollection[index].Resources.Add("data", item);
-                            BorderBrushCollection[index] = (item.IsValueValidForType()) ? Brushes.Green : Brushes.Red;
+                            BorderBrushCollection[index] = (item.IsValueValid()) ? Brushes.Green : Brushes.Red;
                             DescriptionCollection[index] = ($"ID: {item.Id} Name: {item.Name}");
 
                             addedEntities.Add(item);
@@ -116,16 +113,15 @@ namespace NetworkService.ViewModel
                 }
             }
             catch (Exception ex)
-            {
-                
+            {  
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
             foreach (var entity in addedEntities)
             {
                 EntitiesInList.Remove(entity);
             }
-
         }
+        #endregion
         private void OnDrop(object parameter)
         {
             if (draggedItem != null)
@@ -142,7 +138,7 @@ namespace NetworkService.ViewModel
                     CanvasCollection[index].Background = new ImageBrush(logo);
                     CanvasCollection[index].Resources.Add("taken", true);
                     CanvasCollection[index].Resources.Add("data", draggedItem);
-                    BorderBrushCollection[index] = (draggedItem.IsValueValidForType()) ? Brushes.Green : Brushes.Red;
+                    BorderBrushCollection[index] = (draggedItem.IsValueValid()) ? Brushes.Green : Brushes.Red;
                     DescriptionCollection[index] = ($"ID: {draggedItem.Id} Name: {draggedItem.Name}");
 
                     // PREVLACENJE IZ DRUGOG CANVASA
@@ -198,7 +194,7 @@ namespace NetworkService.ViewModel
 
             if (canvasIndex != -1)
             {
-                if (entity.IsValueValidForType())
+                if (entity.IsValueValid())
                 {
                     BorderBrushCollection[canvasIndex] = Brushes.Green;
                 }

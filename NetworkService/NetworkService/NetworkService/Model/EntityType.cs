@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 namespace NetworkService.Model
 {
    
-    public class EntityType : Validation
+    public class EntityType : ClassINotifyPropertyChanged
     {
         private string type;
         private string imgSrc = "";
-
         public string Type
         {
             get { return type; }
@@ -24,7 +23,6 @@ namespace NetworkService.Model
                 }
             }
         }
-
         public string ImgSrc
         {
             get { return imgSrc; }
@@ -35,14 +33,6 @@ namespace NetworkService.Model
                     imgSrc = value;
                     OnPropertyChanged("ImgSrc");
                 }
-            }
-        }
-
-        protected override void ValidateSelf()
-        {
-            if (this.Type == null)
-            {
-                this.ValidationErrors["Type"] = "Type must be selected.";
             }
         }
     }

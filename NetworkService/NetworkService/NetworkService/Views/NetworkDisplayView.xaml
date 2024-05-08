@@ -10,25 +10,39 @@
              FontFamily="Trebuchet MS">
     <UserControl.Resources>
         <!-- Definišite ControlTemplate sa zaobljenim ivicama -->
-        <ControlTemplate x:Key="RoundedListViewTemplate" TargetType="ListView">
-            <Border CornerRadius="5" Background="{TemplateBinding Background}" 
-                    BorderBrush="{TemplateBinding BorderBrush}" 
-                    BorderThickness="{TemplateBinding BorderThickness}">
+        <ControlTemplate 
+            x:Key="RoundedListViewTemplate" 
+            TargetType="ListView">
+            <Border 
+                CornerRadius="5"
+                Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}">
                 <ScrollViewer>
                     <ItemsPresenter />
                 </ScrollViewer>
             </Border>
         </ControlTemplate>
-        <ControlTemplate x:Key="RoundedButtonTemplate" TargetType="Button">
-            <Border x:Name="buttonBorder" CornerRadius="5" Background="{TemplateBinding Background}" 
-        BorderBrush="{TemplateBinding BorderBrush}" 
-        BorderThickness="{TemplateBinding BorderThickness}">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ControlTemplate 
+            x:Key="RoundedButtonTemplate" 
+            TargetType="Button">
+            <Border 
+                x:Name="buttonBorder" 
+                CornerRadius="5" 
+                Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
             </Border>
 
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="LightBlue" />
+                    <Setter 
+                        TargetName="buttonBorder" 
+                        Property="BorderBrush" 
+                        Value="LightBlue" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -59,12 +73,13 @@
                                     <PropertyGroupDescription PropertyName="Type.Type" />
                                 </CollectionViewSource.GroupDescriptions>
                             </CollectionViewSource>
-
-                            <!-- Definišite GroupStyle -->
                             <GroupStyle x:Key="groupStyle">
                                 <GroupStyle.HeaderTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="#fff"/>
+                                        <TextBlock 
+                                            Text="{Binding Name}"
+                                            FontWeight="Bold"
+                                            Foreground="#fff"/>
                                     </DataTemplate>
                                 </GroupStyle.HeaderTemplate>
                             </GroupStyle>
@@ -73,13 +88,9 @@
                         <ListView.GroupStyle>
                             <StaticResource ResourceKey="groupStyle" />
                         </ListView.GroupStyle>
-                    
-                        <!-- Povežite ItemsSource sa CollectionViewSource -->
                         <ListView.ItemsSource>
                             <Binding Source="{StaticResource groupedEntities}" />
                         </ListView.ItemsSource>
-
-                        <!-- Definišite ItemTemplate -->
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Cursor="Hand">
@@ -91,14 +102,15 @@
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-
-                        <!-- Interaction Triggers -->
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding SelectionChanged}" CommandParameter="{Binding ElementName=listViewEntityList}" />
+                                <i:InvokeCommandAction 
+                                    Command="{Binding SelectionChanged}"
+                                    CommandParameter="{Binding ElementName=listViewEntityList}" />
                             </i:EventTrigger>
                             <i:EventTrigger EventName="MouseLeftButtonUp">
-                                <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}" />
+                                <i:InvokeCommandAction 
+                                    Command="{Binding MouseLeftButtonUp}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListView>
@@ -123,10 +135,17 @@
                 Width="390" 
                 Height="520" 
                 VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" Width="390" Height="520">
+                <StackPanel 
+                    Orientation="Horizontal"
+                    Width="390" 
+                    Height="520">
                     <!--Colum1-->
-                    <StackPanel Orientation="Vertical" Margin="0 0 35 0">
-                        <Grid Width="100" Height="520">
+                    <StackPanel 
+                        Orientation="Vertical"
+                        Margin="0 0 35 0">
+                        <Grid 
+                            Width="100"
+                            Height="520">
                             <Border 
                                 BorderBrush="{Binding BorderBrushCollection[0]}" 
                                 BorderThickness="2" 
@@ -171,7 +190,6 @@
                                 FontSize="9"
                                 Foreground="#949BA4"
                                 ></TextBlock>
-
 
                             <Border 
                                 BorderBrush="{Binding BorderBrushCollection[3]}" 
@@ -307,14 +325,15 @@
                                 FontSize="9"
                                 Foreground="#949BA4"
                                 ></TextBlock>
-
                         </Grid>
-                        
-
                     </StackPanel>
                     <!--Colum2-->
-                    <StackPanel Orientation="Vertical" Margin="0 0 35 0">
-                        <Grid Width="100" Height="520">
+                    <StackPanel 
+                        Orientation="Vertical" 
+                        Margin="0 0 35 0">
+                        <Grid 
+                            Width="100"
+                            Height="520">
                             <Border 
                                 BorderBrush="{Binding BorderBrushCollection[1]}" 
                                 BorderThickness="2" 
@@ -493,14 +512,15 @@
                                 FontSize="9"
                                 Foreground="#949BA4"
                                 ></TextBlock>
-
                         </Grid>
-
-
                     </StackPanel>
                     <!--Colum3-->
-                    <StackPanel Orientation="Vertical" Margin="0 0 35 0">
-                        <Grid Width="100" Height="520">
+                    <StackPanel 
+                        Orientation="Vertical"
+                        Margin="0 0 35 0">
+                        <Grid 
+                            Width="100"
+                            Height="520">
                             <Border 
                                 BorderBrush="{Binding BorderBrushCollection[2]}"
                                 BorderThickness="2" 
@@ -680,11 +700,10 @@
                                 FontSize="9"
                                 Foreground="#949BA4"
                                 ></TextBlock>
-
                         </Grid>
                     </StackPanel>
                 </StackPanel>
-                
+
                 <ItemsControl ItemsSource="{Binding LineCollection}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -707,7 +726,5 @@
                 </ItemsControl>
             </Canvas>
         </StackPanel>
-        
     </Grid>
-    
 </UserControl>

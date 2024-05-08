@@ -72,8 +72,6 @@
     <Compile Include="Model\EntityType.cs" />
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="Model\MyLine.cs" />
-    <Compile Include="Validation.cs" />
-    <Compile Include="ValidationErrors.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MeasurementGraphViewModel.cs" />
     <Compile Include="ViewModel\NetworkDisplayViewModel.cs" />

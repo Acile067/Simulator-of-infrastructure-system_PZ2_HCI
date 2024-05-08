@@ -15,21 +15,16 @@ namespace NetworkService.Model
         private string cmTime;
         private Brush cmColor;
         private int cmWidthAndHeight;
-
         public CircleMarker()
         {
             cmValue = 1;
-            
         }
-
         public CircleMarker(int cmValue, string cmDate, string cmTime)
         {
             CmValue = cmValue;
             CmDate = cmDate;
             CmTime = cmTime;
         }
-
-
         public int CmValue
         {
             get { return cmValue; }
@@ -52,7 +47,6 @@ namespace NetworkService.Model
                 OnPropertyChanged("CmValue");
             }
         }
-
         public string CmDate
         {
             get { return cmDate; }
@@ -71,7 +65,6 @@ namespace NetworkService.Model
                 OnPropertyChanged("CmWidthAndHeight");
             }
         }
-
         public string CmTime
         {
             get { return cmTime; }

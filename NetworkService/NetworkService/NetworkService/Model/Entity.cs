@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace NetworkService.Model
 {
-    public class Entity : Validation
+    public class Entity : ClassINotifyPropertyChanged
     {
         private int id;
         private string name;
         private EntityType type;
         private double value;
-
         public int Id
         {
             get { return id; }
@@ -37,7 +36,6 @@ namespace NetworkService.Model
                 }
             }
         }
-
         public double Value
         {
             get { return this.value; }
@@ -50,7 +48,6 @@ namespace NetworkService.Model
                 }
             }
         }
-
         public EntityType Type
         {
             get { return type; }
@@ -65,8 +62,7 @@ namespace NetworkService.Model
                 }
             }
         }
-
-        public bool IsValueValidForType()
+        public bool IsValueValid()
         {
             bool isValid = false;
 
@@ -76,11 +72,6 @@ namespace NetworkService.Model
             }
 
             return isValid;
-        }
-
-        protected override void ValidateSelf()
-        {
-            
         }
     }
 }

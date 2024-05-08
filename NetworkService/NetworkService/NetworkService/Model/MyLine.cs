@@ -25,7 +25,6 @@ namespace NetworkService.Model
                 OnPropertyChanged("X1");
             }
         }
-
         public double Y1
         {
             get { return y1; }
@@ -35,7 +34,6 @@ namespace NetworkService.Model
                 OnPropertyChanged("Y1");
             }
         }
-
         public double X2
         {
             get { return x2; }
@@ -45,7 +43,6 @@ namespace NetworkService.Model
                 OnPropertyChanged("X2");
             }
         }
-
         public double Y2
         {
             get { return y2; }
@@ -55,7 +52,6 @@ namespace NetworkService.Model
                 OnPropertyChanged("Y2");
             }
         }
-
         public int Source
         {
             get { return source; }
@@ -65,7 +61,6 @@ namespace NetworkService.Model
                 OnPropertyChanged("Source");
             }
         }
-
         public int Destination
         {
             get { return destination; }
