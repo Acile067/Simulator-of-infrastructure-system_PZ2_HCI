@@ -7,12 +7,33 @@
              mc:Ignorable="d" 
              Width="700" Height="700"
              FontFamily="Trebuchet MS">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="RoundedButtonTemplate" TargetType="Button">
+            <Border x:Name="buttonBorder" CornerRadius="3" Background="{TemplateBinding Background}" 
+            BorderBrush="{TemplateBinding BorderBrush}" 
+            BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="LightBlue" />
+                </Trigger>
+
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="buttonBorder" Property="Background" Value="Gray" />
+                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="DarkGray" />
+                    <Setter Property="Opacity" Value="0.5" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="130 20 70 20">
-                <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Entity:" Margin="0 0 15 0 "></TextBlock>
-                <ComboBox Width="120" Height="30" ItemsSource="{Binding ComboBoxItems}" SelectedItem="{Binding SelectedEntity}" Margin="0 0 15 0 " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
-                <Button Height="30" Width="100" Content="Show" Command="{Binding ShowCommand}"></Button>
+                <TextBlock Foreground="#949BA4" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Entity:" Margin="0 0 15 0 "></TextBlock>
+                <ComboBox Cursor="Hand" Width="120" Height="30" ItemsSource="{Binding ComboBoxItems}" SelectedItem="{Binding SelectedEntity}" Margin="0 0 15 0 " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+                <Button Cursor="Hand" Template="{StaticResource RoundedButtonTemplate}" Background="#1E1F22" Foreground="#fff" FontWeight="Bold" BorderBrush="#000" Height="30" Width="100" Content="Show" Command="{Binding ShowCommand}"></Button>
             </StackPanel>
             <Canvas Background="Gray" Margin="130 0 70 0" Height="475">
                 <Grid Name="Column1" Background="LightGray" Width="80" Height="475" Margin="20,0,0,0">

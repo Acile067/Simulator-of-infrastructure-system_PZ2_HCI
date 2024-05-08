@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +23,7 @@ namespace NetworkService.ViewModel
         public ObservableCollection<Brush> BorderBrushCollection { get; set; }
         public ObservableCollection<Canvas> CanvasCollection { get; set; }
         public ObservableCollection<MyLine> LineCollection { get; set; }
+        public ObservableCollection<string> DescriptionCollection { get; set; }
 
         private Entity selectedEntity;
 
@@ -64,8 +66,11 @@ namespace NetworkService.ViewModel
                     Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#949BA4")),
                     AllowDrop = true
                 });
-
-
+            }
+            DescriptionCollection = new ObservableCollection<string>();
+            for(int i = 0; i < 12; i++)
+            {
+                DescriptionCollection.Add(" ");
             }
 
             DropEntityOnCanvas = new ClassICommand<object>(OnDrop);
@@ -99,6 +104,7 @@ namespace NetworkService.ViewModel
                             CanvasCollection[index].Resources.Add("taken", true);
                             CanvasCollection[index].Resources.Add("data", item);
                             BorderBrushCollection[index] = (item.IsValueValidForType()) ? Brushes.Green : Brushes.Red;
+                            DescriptionCollection[index] = ($"ID: {item.Id} Name: {item.Name}");
 
                             addedEntities.Add(item);
 
@@ -137,14 +143,18 @@ namespace NetworkService.ViewModel
                     CanvasCollection[index].Resources.Add("taken", true);
                     CanvasCollection[index].Resources.Add("data", draggedItem);
                     BorderBrushCollection[index] = (draggedItem.IsValueValidForType()) ? Brushes.Green : Brushes.Red;
+                    DescriptionCollection[index] = ($"ID: {draggedItem.Id} Name: {draggedItem.Name}");
 
                     // PREVLACENJE IZ DRUGOG CANVASA
                     if (draggingSourceIndex != -1)
                     {
                         CanvasCollection[draggingSourceIndex].Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#949BA4"));
+                        
                         CanvasCollection[draggingSourceIndex].Resources.Remove("taken");
                         CanvasCollection[draggingSourceIndex].Resources.Remove("data");
                         BorderBrushCollection[draggingSourceIndex] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22"));
+                        DescriptionCollection[draggingSourceIndex] = (" ");
+                        
 
                         UpdateLinesForCanvas(draggingSourceIndex, index);
 
@@ -208,6 +218,7 @@ namespace NetworkService.ViewModel
                 CanvasCollection[canvasIndex].Resources.Remove("taken");
                 CanvasCollection[canvasIndex].Resources.Remove("data");
                 BorderBrushCollection[canvasIndex] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22"));
+                DescriptionCollection[canvasIndex] = ($" ");
 
                 DeleteLinesForCanvas(canvasIndex);
             }
@@ -266,6 +277,7 @@ namespace NetworkService.ViewModel
                 CanvasCollection[index].Resources.Remove("taken");
                 CanvasCollection[index].Resources.Remove("data");
                 BorderBrushCollection[index] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22"));
+                DescriptionCollection[index] = ($" ");
             }
         }
         private void OnRightMouseButtonDown(object parameter)

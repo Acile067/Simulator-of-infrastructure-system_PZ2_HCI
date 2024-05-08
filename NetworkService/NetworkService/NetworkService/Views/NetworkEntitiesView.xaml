@@ -51,11 +51,12 @@
                             Foreground="#949BA4"
                             ></TextBlock>
                     
-                        <ComboBox 
+                        <ComboBox
                             x:Name="comboBoxEntityType" 
                             ItemsSource="{Binding ComboBoxItems}" 
                             SelectedItem="{Binding CurrentEntityType.Type, Mode=TwoWay}" 
                             Width="120"
+                            Cursor="Hand"
                             Height="30"
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
@@ -216,12 +217,14 @@
                         Foreground="#949BA4"
                         IsChecked="{Binding IsNameRBSelected, Mode=TwoWay}" 
                         x:Name="nameRB"
+                        Cursor="Hand"
                         Margin="0 0 10 0"
                         >Name</RadioButton>
                     <RadioButton 
                         Foreground="#949BA4" 
                         IsChecked="{Binding IsTypeRBSelected, Mode=TwoWay}" 
                         x:Name="typeRB"
+                        Cursor="Hand"
                         >Type</RadioButton>
                 </StackPanel>
                 <ComboBox 

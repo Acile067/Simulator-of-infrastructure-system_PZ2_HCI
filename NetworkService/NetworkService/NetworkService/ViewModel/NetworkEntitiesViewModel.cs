@@ -39,7 +39,7 @@ namespace NetworkService.ViewModel
         private string searchBox;
         private bool isTypeRBSelected;
         private bool isNameRBSelected = true;
-        private List<string> searchedHistory = new List<string>();
+        private ObservableCollection<string> searchedHistory = new ObservableCollection<string>();
 
         public NetworkEntitiesViewModel()
         {
@@ -69,7 +69,7 @@ namespace NetworkService.ViewModel
 
         #region SearchBTN
 
-        public List<string> SearchedHistory
+        public ObservableCollection<string> SearchedHistory
         {
             get { return searchedHistory; }
             set
