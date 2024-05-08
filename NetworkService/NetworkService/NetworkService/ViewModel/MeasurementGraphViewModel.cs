@@ -77,31 +77,37 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged("SelectedEntityToShow");
             }
         }
-
+        int keyCount = 0;
         public void OnShow()
         {
             SelectedEntityToShow = SelectedEntity;
-            UpdateValue();
-        }
-
-        public void UpdateValue()
-        {
-            int keyCount = 0;
-            foreach (var entity in EntitiesInList) 
-            { 
-                if(entity.Name == SelectedEntityToShow)
+            keyCount = 0;
+            foreach (var entity in EntitiesInList)
+            {
+                if (entity.Name == SelectedEntityToShow)
                 {
                     break;
                 }
                 keyCount++;
             }
+            foreach (CircleMarker marker in CircleMarkers)
+            {
+                marker.CmTime = "";
+                marker.CmValue = 1;
+                marker.CmDate = "";
+            }
+            UpdateValue();           
+        }
 
+        public void UpdateValue()
+        {
+            
             foreach (var item in MesuresDict.Keys)
             {                
                 string customKey = $"Entity_{keyCount}";
 
                 if (item == customKey)
-                {
+                {                   
                     List<Measurement> list = new List<Measurement>();
                     list = MesuresDict[item];
                     int br = 0;
