@@ -9,10 +9,15 @@
              FontFamily="Trebuchet MS">
     <UserControl.Resources>
         <ControlTemplate x:Key="RoundedButtonTemplate" TargetType="Button">
-            <Border x:Name="buttonBorder" CornerRadius="3" Background="{TemplateBinding Background}" 
-            BorderBrush="{TemplateBinding BorderBrush}" 
-            BorderThickness="{TemplateBinding BorderThickness}">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Border 
+                x:Name="buttonBorder" 
+                CornerRadius="3" 
+                Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
             </Border>
 
             <ControlTemplate.Triggers>
@@ -30,67 +35,266 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="130 20 70 20">
-                <TextBlock Foreground="#949BA4" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Entity:" Margin="0 0 15 0 "></TextBlock>
-                <ComboBox Cursor="Hand" Width="120" Height="30" ItemsSource="{Binding ComboBoxItems}" SelectedItem="{Binding SelectedEntity}" Margin="0 0 15 0 " HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
-                <Button Cursor="Hand" Template="{StaticResource RoundedButtonTemplate}" Background="#1E1F22" Foreground="#fff" FontWeight="Bold" BorderBrush="#000" Height="30" Width="100" Content="Show" Command="{Binding ShowCommand}"></Button>
+            <StackPanel 
+                Orientation="Horizontal" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Margin="130 20 70 20">
+                <TextBlock 
+                    Foreground="#949BA4" 
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Bold" 
+                    Text="Entity:" 
+                    Margin="0 0 15 0 "
+                    ></TextBlock>
+                <ComboBox 
+                    Cursor="Hand"
+                    Width="120" 
+                    Height="30"
+                    ItemsSource="{Binding ComboBoxItems}"
+                    SelectedItem="{Binding SelectedEntity, Mode=TwoWay}"
+                    Margin="0 0 15 0 "
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center"
+                    ></ComboBox>
+                <Button 
+                    Cursor="Hand" 
+                    Template="{StaticResource RoundedButtonTemplate}" 
+                    Background="#1E1F22"
+                    Foreground="#fff" 
+                    FontWeight="Bold"
+                    BorderBrush="#000" 
+                    Height="30" 
+                    Width="100" 
+                    Content="Show"
+                    Command="{Binding ShowCommand}"
+                    ></Button>
             </StackPanel>
-            <Canvas Background="Gray" Margin="130 0 70 0" Height="475">
-                <Grid Name="Column1" Background="LightGray" Width="80" Height="475" Margin="20,0,0,0">
-                    <Grid Name="ValueRange1" Height="430" VerticalAlignment="Top">
-                        <Grid Name="Element1" Margin="{Binding CircleMarkers[0].CmMargin}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Fill="{Binding CircleMarkers[0].CmColor}" Width="40" Height="40"/>
-                            <TextBlock Text="{Binding CircleMarkers[0].CmValue}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Border 
+                BorderBrush="#000" 
+                BorderThickness="0"
+                Margin="130 0 70 0"
+                Height="485">
+                <Canvas Background="#313338" Height="475">
+                    <Border 
+                        BorderBrush="#000"
+                        BorderThickness="1"
+                        Margin="20,0,0,0"
+                        VerticalAlignment="Center">
+                        <Grid 
+                            Name="Column1" 
+                            Background="#949BA4"
+                            Width="80" 
+                            Height="475" >
+                            <Grid 
+                                Name="ValueRange1"
+                                Height="430" 
+                                VerticalAlignment="Top">
+                                <Grid 
+                                    Name="Element1" 
+                                    Width="{Binding CircleMarkers[0].CmWidthAndHeight}" 
+                                    Height="{Binding CircleMarkers[0].CmWidthAndHeight}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    <Ellipse 
+                                        Fill="{Binding CircleMarkers[0].CmColor}"
+                                        Width="{Binding CircleMarkers[0].CmWidthAndHeight}"
+                                        Height="{Binding CircleMarkers[0].CmWidthAndHeight}"/>
+                                </Grid>
+                            </Grid>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[0].CmDate}"
+                                Foreground="#fff"
+                                Width="80" 
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom" 
+                                Margin="0,0,0,30"/>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[0].CmTime}"
+                                Foreground="#fff"
+                                Width="80"
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,10"/>
                         </Grid>
-                    </Grid>
-                    <TextBlock Text="{Binding CircleMarkers[0].CmDate}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
-                    <TextBlock Text="{Binding CircleMarkers[0].CmTime}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-                </Grid>
-
-                <Grid Name="Column2" Background="LightGray" Width="80" Height="475" Margin="115,0,0,0">
-                    <Grid Name="ValueRange2" Height="430" VerticalAlignment="Top">
-                        <Grid Name="Element2" Margin="{Binding CircleMarkers[1].CmMargin}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Fill="{Binding CircleMarkers[1].CmColor}" Width="40" Height="40"/>
-                            <TextBlock Text="{Binding CircleMarkers[1].CmValue}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border 
+                        BorderBrush="#000" 
+                        BorderThickness="1" 
+                        Margin="115,0,0,0">
+                        <Grid 
+                            Name="Column2"
+                            Background="#949BA4"
+                            Width="80" 
+                            Height="475" >
+                            <Grid 
+                                Name="ValueRange2" 
+                                Height="430" 
+                                VerticalAlignment="Top">
+                                <Grid 
+                                    Name="Element2"
+                                    Width="{Binding CircleMarkers[1].CmWidthAndHeight}"
+                                    Height="{Binding CircleMarkers[1].CmWidthAndHeight}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    <Ellipse 
+                                        Fill="{Binding CircleMarkers[1].CmColor}" 
+                                        Width="{Binding CircleMarkers[1].CmWidthAndHeight}"
+                                        Height="{Binding CircleMarkers[1].CmWidthAndHeight}"/>
+                                </Grid>
+                            </Grid>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[1].CmDate}"
+                                Foreground="#fff"
+                                Width="80" 
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,30"/>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[1].CmTime}"
+                                Foreground="#fff" 
+                                Width="80" 
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,10"/>
                         </Grid>
-                    </Grid>
-                    <TextBlock Text="{Binding CircleMarkers[1].CmDate}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
-                    <TextBlock Text="{Binding CircleMarkers[1].CmTime}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-                </Grid>
-
-                <Grid Name="Column3" Background="LightGray" Width="80" Height="475" Margin="210,0,0,0">
-                    <Grid Name="ValueRange3" Height="430" VerticalAlignment="Top">
-                        <Grid Name="Element3" Margin="{Binding CircleMarkers[2].CmMargin}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Fill="{Binding CircleMarkers[2].CmColor}" Width="40" Height="40"/>
-                            <TextBlock Text="{Binding CircleMarkers[2].CmValue}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border 
+                        BorderBrush="#000" 
+                        BorderThickness="1" 
+                        Margin="210,0,0,0">
+                        <Grid 
+                            Name="Column3" 
+                            Background="#949BA4"
+                            Width="80"
+                            Height="475" >
+                            <Grid 
+                                Name="ValueRange3" 
+                                Height="430"
+                                VerticalAlignment="Top">
+                                <Grid 
+                                    Name="Element3" 
+                                    Width="{Binding CircleMarkers[2].CmWidthAndHeight}"
+                                    Height="{Binding CircleMarkers[2].CmWidthAndHeight}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    <Ellipse 
+                                        Fill="{Binding CircleMarkers[2].CmColor}" 
+                                        Width="{Binding CircleMarkers[2].CmWidthAndHeight}"
+                                        Height="{Binding CircleMarkers[2].CmWidthAndHeight}"/>
+                                </Grid>
+                            </Grid>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[2].CmDate}"
+                                Foreground="#fff" 
+                                Width="80" 
+                                TextAlignment="Center" 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,30"/>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[2].CmTime}"
+                                Foreground="#fff" 
+                                Width="80" 
+                                TextAlignment="Center" 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,10"/>
                         </Grid>
-                    </Grid>
-                    <TextBlock Text="{Binding CircleMarkers[2].CmDate}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
-                    <TextBlock Text="{Binding CircleMarkers[2].CmTime}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-                </Grid>
-
-                <Grid Name="Column4" Background="LightGray" Width="80" Height="475" Margin="305,0,0,0">
-                    <Grid Name="ValueRange4" Height="430" VerticalAlignment="Top">
-                        <Grid Name="Element4" Margin="{Binding CircleMarkers[3].CmMargin}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Fill="{Binding CircleMarkers[3].CmColor}" Width="40" Height="40"/>
-                            <TextBlock Text="{Binding CircleMarkers[3].CmValue}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border 
+                        BorderBrush="#000" 
+                        BorderThickness="1" 
+                        Margin="305,0,0,0">
+                        <Grid 
+                            Name="Column4" 
+                            Background="#949BA4"
+                            Width="80" 
+                            Height="475" >
+                            <Grid
+                                Name="ValueRange4" 
+                                Height="430" 
+                                VerticalAlignment="Top">
+                                <Grid
+                                    Name="Element4"
+                                    Width="{Binding CircleMarkers[3].CmWidthAndHeight}"
+                                    Height="{Binding CircleMarkers[3].CmWidthAndHeight}" 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center">
+                                    <Ellipse 
+                                        Fill="{Binding CircleMarkers[3].CmColor}" 
+                                        Width="{Binding CircleMarkers[3].CmWidthAndHeight}" 
+                                        Height="{Binding CircleMarkers[3].CmWidthAndHeight}"/>
+                                </Grid>
+                            </Grid>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[3].CmDate}"
+                                Foreground="#fff" 
+                                Width="80" 
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,30"/>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[3].CmTime}"
+                                Foreground="#fff" 
+                                Width="80" 
+                                TextAlignment="Center" 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,10"/>
                         </Grid>
-                    </Grid>
-                    <TextBlock Text="{Binding CircleMarkers[3].CmDate}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
-                    <TextBlock Text="{Binding CircleMarkers[3].CmTime}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-                </Grid>
-
-                <Grid Name="Column5" Background="LightGray" Width="80" Height="475" Margin="400,0,0,0">
-                    <Grid Name="ValueRange5" Height="430" VerticalAlignment="Top">
-                        <Grid Name="Element5" Margin="{Binding CircleMarkers[4].CmMargin}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Fill="{Binding CircleMarkers[4].CmColor}" Width="40" Height="40"/>
-                            <TextBlock Text="{Binding CircleMarkers[4].CmValue}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border 
+                        BorderBrush="#000" 
+                        BorderThickness="1" 
+                        Margin="400,0,0,0">
+                        <Grid 
+                            Name="Column5" 
+                            Background="#949BA4" 
+                            Width="80" 
+                            Height="475" >
+                            <Grid 
+                                Name="ValueRange5"
+                                Height="430"
+                                VerticalAlignment="Top">
+                                <Grid 
+                                    Name="Element5" 
+                                    Width="{Binding CircleMarkers[4].CmWidthAndHeight}"
+                                    Height="{Binding CircleMarkers[4].CmWidthAndHeight}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    <Ellipse 
+                                        Fill="{Binding CircleMarkers[4].CmColor}"
+                                        Width="{Binding CircleMarkers[4].CmWidthAndHeight}"
+                                        Height="{Binding CircleMarkers[4].CmWidthAndHeight}"/>
+                                </Grid>
+                            </Grid>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[4].CmDate}"
+                                Foreground="#fff" 
+                                Width="80"
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,30"/>
+                            <TextBlock 
+                                Text="{Binding CircleMarkers[4].CmTime}"
+                                Foreground="#fff"
+                                Width="80" 
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,0,10"/>
                         </Grid>
-                    </Grid>
-                    <TextBlock Text="{Binding CircleMarkers[4].CmDate}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
-                    <TextBlock Text="{Binding CircleMarkers[4].CmTime}" Width="80" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-                </Grid>
-            </Canvas>
+                    </Border>
+                </Canvas>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

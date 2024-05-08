@@ -70,7 +70,6 @@
     <Compile Include="Model\CircleMarker.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\EntityType.cs" />
-    <Compile Include="Model\LogParser.cs" />
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="Model\MyLine.cs" />
     <Compile Include="Validation.cs" />

@@ -187,6 +187,7 @@ namespace NetworkService.ViewModel
                                 networkEntitiesViewModel.Entities[id].Value = Double.Parse(splited[1]);
                                 networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
 
+                                measurementGraphViewModel.AutoShow();
                             }
 
                             
