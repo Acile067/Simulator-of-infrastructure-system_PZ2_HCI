@@ -101,8 +101,8 @@ namespace NetworkService.ViewModel
                             CanvasCollection[index].Resources.Add("taken", true);
                             CanvasCollection[index].Resources.Add("data", item);
                             BorderBrushCollection[index] = (item.IsValueValid()) ? Brushes.Green : Brushes.Red;
-                            DescriptionCollection[index] = ($"ID: {item.Id} Name: {item.Name}");
-
+                            DescriptionCollection[index] = ($"ID: {item.Id} Value: {item.Value}");
+                            
                             addedEntities.Add(item);
 
                             break;
@@ -139,7 +139,7 @@ namespace NetworkService.ViewModel
                     CanvasCollection[index].Resources.Add("taken", true);
                     CanvasCollection[index].Resources.Add("data", draggedItem);
                     BorderBrushCollection[index] = (draggedItem.IsValueValid()) ? Brushes.Green : Brushes.Red;
-                    DescriptionCollection[index] = ($"ID: {draggedItem.Id} Name: {draggedItem.Name}");
+                    DescriptionCollection[index] = ($"ID: {draggedItem.Id} Value: {draggedItem.Value}");
 
                     // PREVLACENJE IZ DRUGOG CANVASA
                     if (draggingSourceIndex != -1)
@@ -194,6 +194,7 @@ namespace NetworkService.ViewModel
 
             if (canvasIndex != -1)
             {
+                DescriptionCollection[canvasIndex] = ($"ID: {entity.Id} Value: {entity.Value}");
                 if (entity.IsValueValid())
                 {
                     BorderBrushCollection[canvasIndex] = Brushes.Green;
