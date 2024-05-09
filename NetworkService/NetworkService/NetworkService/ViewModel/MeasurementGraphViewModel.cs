@@ -15,11 +15,14 @@ namespace NetworkService.ViewModel
 {
     public class MeasurementGraphViewModel : ClassINotifyPropertyChanged
     {
+        #region Initialize
+        int keyCount = -1;
         private List<string> comboBoxItems;
         private string selectedEntity;
         private string selectedEntityToShow;
-        public Dictionary<string, List<Measurement>> MesuresDict { get; set; }
+        public Dictionary<string, List<Measurement>> MeasurementDict { get; set; }
         public ObservableCollection<CircleMarker> CircleMarkers { get; set; }
+        public BindingList<Entity> EntitiesInList { get; set; }
 
         public ClassICommand ShowCommand { get; set; }
         public List<string> ComboBoxItems
@@ -46,7 +49,16 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged("SelectedEntity");
             }
         }
-        public BindingList<Entity> EntitiesInList { get; set; }
+        public string SelectedEntityToShow
+        {
+            get { return selectedEntityToShow; }
+            set
+            {
+                selectedEntityToShow = value;
+
+                OnPropertyChanged("SelectedEntityToShow");
+            }
+        }
 
         public MeasurementGraphViewModel()
         {
@@ -54,7 +66,7 @@ namespace NetworkService.ViewModel
             
             EntitiesInList.ListChanged += OnEntitiesInListChanged;
 
-            MesuresDict = new Dictionary<string, List<Measurement>>();
+            MeasurementDict = new Dictionary<string, List<Measurement>>();
             CircleMarkers = new ObservableCollection<CircleMarker>();
             for (int i = 0; i <5; i++)
             {
@@ -66,18 +78,9 @@ namespace NetworkService.ViewModel
 
             ShowCommand = new ClassICommand(OnShow, CanShow);
         }
+        #endregion
 
-        public string SelectedEntityToShow
-        {
-            get { return selectedEntityToShow; }
-            set
-            {
-                selectedEntityToShow = value;
-
-                OnPropertyChanged("SelectedEntityToShow");
-            }
-        }
-        int keyCount = 0;
+        #region ShowBTN
         public void OnShow()
         {
             SelectedEntityToShow = SelectedEntity;
@@ -99,26 +102,33 @@ namespace NetworkService.ViewModel
             UpdateValue();           
         }
 
+        private bool CanShow()
+        {
+            return SelectedEntity != null;
+        }
+        #endregion
+
+        #region AutoUpdate
         public void UpdateValue()
         {
             
-            foreach (var item in MesuresDict.Keys)
+            foreach (var item in MeasurementDict.Keys)
             {                
                 string customKey = $"Entity_{keyCount}";
 
                 if (item == customKey)
                 {                   
                     List<Measurement> list = new List<Measurement>();
-                    list = MesuresDict[item];
-                    int br = 0;
+                    list = MeasurementDict[item];
+                    int cnt = 0;
                     foreach (Measurement measurement in list)
                     {
                         CircleMarker cm = new CircleMarker(measurement.Value, measurement.Date, measurement.Time);
 
-                        CircleMarkers[br++] = cm;
-                        if (br == 5)
+                        CircleMarkers[cnt++] = cm;
+                        if (cnt == 5)
                         {
-                            br = 0;
+                            cnt = 0;
                         }
                     }
                 }
@@ -128,89 +138,82 @@ namespace NetworkService.ViewModel
         public void AutoShow()
         {
             string filePath = "Log.txt";
-            string poslednjaLinija = ProcitajPoslednjuLiniju(filePath);
+            string poslednjaLinija = ReadLastLine(filePath);
             if (poslednjaLinija != null)
             {
-                // Parsirajte poslednju liniju
-                (string datum, string vreme, string entitet, int vrednost) = ParsirajLiniju(poslednjaLinija);
-                string[] delovi = entitet.Split('_');
-                int brojEntiteta = int.Parse(delovi[1]);
-                // Ispišite rezultate
-                //MessageBox.Show($"{datum} {entitet} {vrednost} {brojEntiteta} {vreme}");
-                
-                Measurement measurement = new Measurement(datum,vreme, vrednost);
-                string key = $"Entity_{brojEntiteta}";
+                (string date, string time, string entity, int value) = ParseLine(poslednjaLinija);
+                string[] entityParts = entity.Split('_');
+                int entityNumber = int.Parse(entityParts[1]);
+               
+                Measurement measurement = new Measurement(date, time, value);
+                string key = $"Entity_{entityNumber}";
 
-                if (MesuresDict.ContainsKey(key))
+                if (MeasurementDict.ContainsKey(key))
                 {
-                    MesuresDict[key].Add(measurement);
-                    if (MesuresDict[key].Count > 5)
+                    MeasurementDict[key].Add(measurement);
+                    if (MeasurementDict[key].Count > 5)
                     {
-                        MesuresDict[key].RemoveAt(0);
+                        MeasurementDict[key].RemoveAt(0);
                     }
                 }
                 else
                 {
-                    MesuresDict[key] = new List<Measurement> { measurement };
+                    MeasurementDict[key] = new List<Measurement> { measurement };
                 }
 
                 UpdateValue();
             }
 
         }
+        #endregion
 
-        static string ProcitajPoslednjuLiniju(string filePath)
+        #region LogParser
+        static string ReadLastLine(string filePath)
         {
-            // Koristite StreamReader za čitanje fajla
             using (StreamReader reader = new StreamReader(filePath))
             {
-                // Kreirajte promenljivu za čitanje linije
-                string linija;
-                string poslednjaLinija = null;
+                string line;
+                string lastLine = null;
 
-                // Čitajte fajl dok ne dođete do kraja
-                while ((linija = reader.ReadLine()) != null)
+                while ((line = reader.ReadLine()) != null)
                 {
-                    // Zadržite poslednju liniju
-                    poslednjaLinija = linija;
+                    lastLine = line;
                 }
 
-                return poslednjaLinija;
+                return lastLine;
             }
         }
-        static (string datum, string vreme, string entitet, int vrednost) ParsirajLiniju(string linija)
+        static (string date, string time, string entity, int value) ParseLine(string line)
         {
             // Podelite liniju koristeći tačku-zarez (`;`) kao separator
-            string[] delovi = linija.Split(';');
+            string[] parts = line.Split(';');
 
             // Prvi deo (datum i vreme) je prvi element niza `delovi`
-            string datumVremeDeo = delovi[0].Trim();
+            string dateTimePart = parts[0].Trim();
 
             // Podelite datum i vreme koristeći razmak (` `) kao separator
-            string[] datumVremeDelovi = datumVremeDeo.Split(' ');
-            string datum = datumVremeDelovi[0];
-            string vreme = datumVremeDelovi[1];
+            string[] dateTimePart_s = dateTimePart.Split(' ');
+            string date = dateTimePart_s[0];
+            string time = dateTimePart_s[1];
 
             // Drugi deo (entitet i vrednost) je drugi element niza `delovi`
-            string ostatak = delovi[1].Trim();
+            string leftover = parts[1].Trim();
 
             // Podelite ostatak koristeći zarez (`,`) kao separator
-            string[] ostatakDelovi = ostatak.Split(',');
+            string[] leftoverParts = leftover.Split(',');
 
             // Entitet je prvi deo ostatka
-            string entitet = ostatakDelovi[0].Trim();
+            string entity = leftoverParts[0].Trim();
 
             // Vrednost je drugi deo ostatka
-            int vrednost = int.Parse(ostatakDelovi[1].Trim());
+            int value = int.Parse(leftoverParts[1].Trim());
 
             // Vraća tuple sa razdvojenim datumom, vremenom, entitetom i vrednošću
-            return (datum, vreme, entitet, vrednost);
+            return (date, time, entity, value);
         }
-        private bool CanShow()
-        {
-            return SelectedEntity != null;
-        }
+        #endregion       
 
+        #region ComboBoxItems
         private void OnEntitiesInListChanged(object sender, ListChangedEventArgs e)
         {
             UpdateComboBoxItems();
@@ -218,11 +221,8 @@ namespace NetworkService.ViewModel
             if (SelectedEntity != null && !ComboBoxItems.Contains(SelectedEntity))
             {
                 SelectedEntity = null;
-            }
-
-            
+            }         
         }
-
         private void UpdateComboBoxItems()
         {
             ComboBoxItems = EntitiesInList
@@ -230,6 +230,6 @@ namespace NetworkService.ViewModel
                 .ToList();
             OnPropertyChanged(nameof(ComboBoxItems));
         }
-
+        #endregion
     }
 }

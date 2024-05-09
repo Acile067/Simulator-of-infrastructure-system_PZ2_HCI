@@ -31,8 +31,7 @@ namespace NetworkService.ViewModel
         public ClassICommand SearchEntityCommand { get; set; }
         public ClassICommand RefreshEntityCommand { get; set; }
 
-        // For add entity
-        private Entity currentEntity = new Entity();
+        // For add entity 
         private EntityType currentEntityType = new EntityType();
         // Entity selected in table
         private Entity selectedEntity;
@@ -212,17 +211,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged("ErrorMSg");
             }
         }
-
-        public Entity CurrentEntity
-        {
-            get { return currentEntity; }
-            set
-            {
-                currentEntity = value;
-                OnPropertyChanged("CurrentEntity");
-            }
-        }
-
         public EntityType CurrentEntityType
         {
             get { return currentEntityType; }

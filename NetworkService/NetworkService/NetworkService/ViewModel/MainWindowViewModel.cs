@@ -14,6 +14,7 @@ namespace NetworkService.ViewModel
 {
     public class MainWindowViewModel : ClassINotifyPropertyChanged
     {
+        #region Initialize
         public ClassICommand<string> NavCommand { get; private set; }
 
         private NetworkEntitiesViewModel networkEntitiesViewModel = new NetworkEntitiesViewModel();
@@ -22,7 +23,34 @@ namespace NetworkService.ViewModel
 
         private ClassINotifyPropertyChanged currentViewModel;
         private ClassINotifyPropertyChanged alwaysOnViewModel;
-
+        public ClassINotifyPropertyChanged CurrentViewModel
+        {
+            get { return currentViewModel; }
+            set
+            {
+                SetProperty(ref currentViewModel, value);
+            }
+        }
+        public ClassINotifyPropertyChanged AlwaysOnViewModel
+        {
+            get { return alwaysOnViewModel; }
+            set
+            {
+                SetProperty(ref alwaysOnViewModel, value);
+            }
+        }
+        private void OnNav(string destination)
+        {
+            switch (destination)
+            {
+                case "1_Entities":
+                    CurrentViewModel = networkEntitiesViewModel;
+                    break;
+                case "2_Graph":
+                    CurrentViewModel = measurementGraphViewModel;
+                    break;
+            }
+        }
         public MainWindowViewModel()
         {
             
@@ -37,6 +65,9 @@ namespace NetworkService.ViewModel
 
             networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChangedMeasurementGraphViewModel;
         }
+        #endregion
+
+        #region NotifyCollection
         private void OnCollectionChangedMeasurementGraphViewModel(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -88,34 +119,9 @@ namespace NetworkService.ViewModel
                 }
             }
         }
-        public ClassINotifyPropertyChanged CurrentViewModel
-        {
-            get { return currentViewModel; }
-            set
-            {
-                SetProperty(ref currentViewModel, value);
-            }
-        }
-        public ClassINotifyPropertyChanged AlwaysOnViewModel
-        {
-            get { return alwaysOnViewModel; }
-            set
-            {
-                SetProperty(ref alwaysOnViewModel, value);
-            }
-        }
-        private void OnNav(string destination)
-        {
-            switch (destination)
-            {
-                case "1_Entities":
-                    CurrentViewModel = networkEntitiesViewModel;
-                    break;
-                case "2_Graph":
-                    CurrentViewModel = measurementGraphViewModel;
-                    break;
-            }
-        }
+        #endregion
+
+        #region TCP_Server
         private void createListener()
         {
             var tcp = new TcpListener(IPAddress.Any, 25565);
@@ -185,5 +191,6 @@ namespace NetworkService.ViewModel
             listeningThread.IsBackground = true;
             listeningThread.Start();
         }
+        #endregion
     }
 }

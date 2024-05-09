@@ -122,6 +122,24 @@ namespace NetworkService.ViewModel
             }
         }
         #endregion
+
+        #region Helper/GetCanvasIndexForEntityId
+        public int GetCanvasIndexForEntityId(int entityId)
+        {
+            for (int i = 0; i < CanvasCollection.Count; i++)
+            {
+                Entity entity = (CanvasCollection[i].Resources["data"]) as Entity;
+
+                if ((entity != null) && (entity.Id == entityId))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        #endregion
+
+        #region OnDrop
         private void OnDrop(object parameter)
         {
             if (draggedItem != null)
@@ -175,19 +193,10 @@ namespace NetworkService.ViewModel
                 }
             }
         }
-        public int GetCanvasIndexForEntityId(int entityId)
-        {
-            for (int i = 0; i < CanvasCollection.Count; i++)
-            {
-                Entity entity = (CanvasCollection[i].Resources["data"]) as Entity;
 
-                if ((entity != null) && (entity.Id == entityId))
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
+        #endregion
+
+        #region UpdateEntityOnCanvas
         public void UpdateEntityOnCanvas(Entity entity)
         {
             int canvasIndex = GetCanvasIndexForEntityId(entity.Id);
@@ -205,6 +214,10 @@ namespace NetworkService.ViewModel
                 }
             }
         }
+        #endregion
+
+        #region Delete
+        //MainWindowViewModel
         public void DeleteEntityFromCanvas(Entity entity)
         {
             int canvasIndex = GetCanvasIndexForEntityId(entity.Id);
@@ -220,35 +233,21 @@ namespace NetworkService.ViewModel
                 DeleteLinesForCanvas(canvasIndex);
             }
         }
-        private void OnLeftMouseButtonDown(object parameter)
+        private void DeleteLinesForCanvas(int canvasIndex)
         {
-            if (!dragging)
-            {
-                int index = Convert.ToInt32(parameter);
+            List<MyLine> linesToDelete = new List<MyLine>();
 
-                if (CanvasCollection[index].Resources["taken"] != null)
+            for (int i = 0; i < LineCollection.Count; i++)
+            {
+                if ((LineCollection[i].Source == canvasIndex) || (LineCollection[i].Destination == canvasIndex))
                 {
-                    dragging = true;
-                    draggedItem = (Entity)(CanvasCollection[index].Resources["data"]);
-                    draggingSourceIndex = index;
-                    DragDrop.DoDragDrop(CanvasCollection[index], draggedItem, DragDropEffects.Move);
+                    linesToDelete.Add(LineCollection[i]);
                 }
             }
-        }
-        private void OnMouseLeftButtonUp()
-        {
-            draggedItem = null;
-            SelectedEntity = null;
-            dragging = false;
-            draggingSourceIndex = -1;
-        }
-        private void OnSelectionChanged(object parameter)
-        {
-            if (!dragging)
+
+            foreach (MyLine line in linesToDelete)
             {
-                dragging = true;
-                draggedItem = SelectedEntity;
-                DragDrop.DoDragDrop((ListView)parameter, draggedItem, DragDropEffects.Move);
+                LineCollection.Remove(line);
             }
         }
         private void OnFreeCanvas(object parameter)
@@ -277,6 +276,55 @@ namespace NetworkService.ViewModel
                 DescriptionCollection[index] = ($" ");
             }
         }
+        public Entity SelectedEntity
+        {
+            get { return selectedEntity; }
+            set
+            {
+                selectedEntity = value;
+                OnPropertyChanged("SelectedEntity");
+            }
+        }
+        #endregion
+
+        #region LeftMouseBTN
+        private void OnLeftMouseButtonDown(object parameter)
+        {
+            if (!dragging)
+            {
+                int index = Convert.ToInt32(parameter);
+
+                if (CanvasCollection[index].Resources["taken"] != null)
+                {
+                    dragging = true;
+                    draggedItem = (Entity)(CanvasCollection[index].Resources["data"]);
+                    draggingSourceIndex = index;
+                    DragDrop.DoDragDrop(CanvasCollection[index], draggedItem, DragDropEffects.Move);
+                }
+            }
+        }
+        private void OnMouseLeftButtonUp()
+        {
+            draggedItem = null;
+            SelectedEntity = null;
+            dragging = false;
+            draggingSourceIndex = -1;
+        }
+        #endregion
+
+        #region SelectionChanged
+        private void OnSelectionChanged(object parameter)
+        {
+            if (!dragging)
+            {
+                dragging = true;
+                draggedItem = SelectedEntity;
+                DragDrop.DoDragDrop((ListView)parameter, draggedItem, DragDropEffects.Move);
+            }
+        }
+        #endregion
+
+        #region RightMouseButton
         private void OnRightMouseButtonDown(object parameter)
         {
             int index = Convert.ToInt32(parameter);
@@ -346,7 +394,9 @@ namespace NetworkService.ViewModel
                 currentLine = new MyLine();
             }
         }
+        #endregion
 
+        #region Line
         private void UpdateLinesForCanvas(int sourceCanvas, int destinationCanvas)
         {
             for (int i = 0; i < LineCollection.Count; i++)
@@ -367,19 +417,7 @@ namespace NetworkService.ViewModel
                 }
             }
         }
-
-        private bool IsCanvasConnected(int canvasIndex)
-        {
-            foreach (MyLine line in LineCollection)
-            {
-                if ((line.Source == canvasIndex) || (line.Destination == canvasIndex))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+        
         private bool DoesLineAlreadyExist(int source, int destination)
         {
             foreach (MyLine line in LineCollection)
@@ -395,25 +433,6 @@ namespace NetworkService.ViewModel
             }
             return false;
         }
-
-        private void DeleteLinesForCanvas(int canvasIndex)
-        {
-            List<MyLine> linesToDelete = new List<MyLine>();
-
-            for (int i = 0; i < LineCollection.Count; i++)
-            {
-                if ((LineCollection[i].Source == canvasIndex) || (LineCollection[i].Destination == canvasIndex))
-                {
-                    linesToDelete.Add(LineCollection[i]);
-                }
-            }
-
-            foreach (MyLine line in linesToDelete)
-            {
-                LineCollection.Remove(line);
-            }
-        }
-
         // Centralna tacka na Canvas kontroli
         private Point GetPointForCanvasIndex(int canvasIndex)
         {
@@ -436,15 +455,7 @@ namespace NetworkService.ViewModel
             }
             return new Point(x, y);
         }
-
-        public Entity SelectedEntity
-        {
-            get { return selectedEntity; }
-            set
-            {
-                selectedEntity = value;
-                OnPropertyChanged("SelectedEntity");
-            }
-        }
+        #endregion
+        
     }
 }
