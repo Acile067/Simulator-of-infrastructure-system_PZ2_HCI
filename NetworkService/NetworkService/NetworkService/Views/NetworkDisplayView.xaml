@@ -61,7 +61,8 @@
                     Margin="0,5,30,0">
                     <ListView 
                         Background="#212326" 
-                        BorderThickness="0" 
+                        BorderThickness="0"
+                        ToolTip="List view"
                         x:Name="listViewEntityList" 
                         SelectedItem="{Binding SelectedEntity}" 
                         Template="{StaticResource RoundedListViewTemplate}">
@@ -116,6 +117,7 @@
                 </Border>
                 <Button 
                     Cursor="Hand" 
+                    ToolTip="Organize all entities"
                     Background="#1E1F22" 
                     BorderBrush="#000" 
                     Template="{StaticResource RoundedButtonTemplate}" 
@@ -173,6 +175,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand" 
+                                ToolTip="Free this canvas"
                                 Foreground="#343434" 
                                 Background="#B5BAC1" 
                                 BorderBrush="#1E1F22" 
@@ -218,6 +221,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand" 
+                                ToolTip="Free this canvas"
                                 Foreground="#343434" 
                                 Background="#B5BAC1" 
                                 BorderBrush="#1E1F22" 
@@ -263,6 +267,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand" 
+                                ToolTip="Free this canvas"
                                 Foreground="#343434" 
                                 Background="#B5BAC1" 
                                 BorderBrush="#1E1F22" 
@@ -308,6 +313,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand" 
+                                ToolTip="Free this canvas"
                                 Foreground="#343434" 
                                 Background="#B5BAC1" 
                                 BorderBrush="#1E1F22" 
@@ -361,6 +367,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand"
+                                ToolTip="Free this canvas"
                                 Foreground="#343434" 
                                 Background="#B5BAC1"
                                 BorderBrush="#1E1F22" 
@@ -405,6 +412,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand" 
+                                ToolTip="Free this canvas"
                                 Foreground="#343434" 
                                 Background="#B5BAC1" 
                                 BorderBrush="#1E1F22" 
@@ -450,6 +458,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand" 
+                                ToolTip="Free this canvas"
                                 Foreground="#343434"
                                 Background="#B5BAC1"
                                 BorderBrush="#1E1F22"
@@ -495,6 +504,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand" 
+                                ToolTip="Free this canvas"
                                 Foreground="#343434" 
                                 Background="#B5BAC1" 
                                 BorderBrush="#1E1F22" 
@@ -548,6 +558,7 @@
                             <Button 
                                 Content="X" 
                                 Cursor="Hand"
+                                ToolTip="Free this canvas"
                                 Foreground="#343434"
                                 Background="#B5BAC1" 
                                 BorderBrush="#1E1F22"
@@ -593,6 +604,7 @@
                             <Button 
                                 Content="X"
                                 Cursor="Hand"
+                                ToolTip="Free this canvas"
                                 Foreground="#343434"
                                 Background="#B5BAC1"
                                 BorderBrush="#1E1F22"
@@ -638,6 +650,7 @@
                             <Button 
                                 Content="X"
                                 Cursor="Hand"
+                                ToolTip="Free this canvas"
                                 Foreground="#343434"
                                 Background="#B5BAC1"
                                 BorderBrush="#1E1F22"
@@ -683,6 +696,7 @@
                             <Button 
                                 Content="X"
                                 Cursor="Hand"
+                                ToolTip="Free this canvas"
                                 Foreground="#343434"
                                 Background="#B5BAC1" 
                                 BorderBrush="#1E1F22"

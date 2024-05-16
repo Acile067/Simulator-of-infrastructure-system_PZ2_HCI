@@ -59,6 +59,7 @@
                     ></TextBlock>
                 <ComboBox 
                     Cursor="Hand"
+                    ToolTip="Choose entity"
                     Width="120" 
                     Height="30"
                     ItemsSource="{Binding ComboBoxItems}"
@@ -68,7 +69,8 @@
                     VerticalContentAlignment="Center"
                     ></ComboBox>
                 <Button 
-                    Cursor="Hand" 
+                    Cursor="Hand"
+                    ToolTip="Show entity"
                     Template="{StaticResource RoundedButtonTemplate}" 
                     Background="#1E1F22"
                     Foreground="#fff" 

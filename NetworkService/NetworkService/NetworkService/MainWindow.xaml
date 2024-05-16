@@ -67,7 +67,8 @@
                     HorizontalAlignment="Left"  
                     Background="#313338">
                     <MenuItem 
-                        Cursor="Hand" 
+                        Cursor="Hand"
+                        ToolTip="Go to Network Entities"
                         Margin="0 0 68 0" 
                         Height="50" 
                         Command="{Binding NavCommand}" 
@@ -96,7 +97,8 @@
                         </MenuItem.Header>
                     </MenuItem>
                     <MenuItem 
-                        Cursor="Hand" 
+                        Cursor="Hand"
+                        ToolTip="Go to Measurement Graph"
                         Height="50" 
                         Command="{Binding NavCommand}" 
                         CommandParameter="2_Graph" 
