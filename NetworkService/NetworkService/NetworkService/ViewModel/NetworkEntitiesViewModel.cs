@@ -30,6 +30,7 @@ namespace NetworkService.ViewModel
         public ClassICommand DeleteEntityCommand { get; set; }
         public ClassICommand SearchEntityCommand { get; set; }
         public ClassICommand RefreshEntityCommand { get; set; }
+        public ClassICommand SaveSearchCommand { get; set; }
 
         // For add entity 
         private EntityType currentEntityType = new EntityType();
@@ -50,7 +51,31 @@ namespace NetworkService.ViewModel
             DeleteEntityCommand = new ClassICommand(OnDelete, CanDelete);
             SearchEntityCommand = new ClassICommand(onSearch);
             RefreshEntityCommand = new ClassICommand(onRefresh);
+            SaveSearchCommand = new ClassICommand(onSaveHistory);
         }
+        #endregion
+
+        #region SaveHistory
+
+        public ObservableCollection<string> SearchedHistory
+        {
+            get { return searchedHistory; }
+            set
+            {
+                searchedHistory = value;
+                OnPropertyChanged("SearchedHistory");
+            }
+        }
+
+        public void onSaveHistory()
+        {
+            if (!SearchedHistory.Contains(SearchBox) && SearchBox != null && SearchBox.Trim() != "")
+            {
+                SearchedHistory.Add(SearchBox);
+                OnPropertyChanged("SearchedHistory");
+            }
+        }
+
         #endregion
 
         #region Refresh
@@ -65,16 +90,6 @@ namespace NetworkService.ViewModel
         #endregion
 
         #region SearchBTN
-
-        public ObservableCollection<string> SearchedHistory
-        {
-            get { return searchedHistory; }
-            set
-            {
-                searchedHistory = value;
-                OnPropertyChanged("SearchedHistory");
-            }
-        }
 
         public string SearchBox
         {
@@ -132,11 +147,7 @@ namespace NetworkService.ViewModel
                         }
                         EntitiesToShow = EntitiesSearched;
                         OnPropertyChanged("EntitiesToShow");
-                        if (!SearchedHistory.Contains(SearchBox))
-                        {
-                            SearchedHistory.Add(SearchBox);
-                            OnPropertyChanged("SearchedHistory");
-                        }
+                        
                     }
                 }
                 else
@@ -160,11 +171,6 @@ namespace NetworkService.ViewModel
                         }
                         EntitiesToShow = EntitiesSearched;
                         OnPropertyChanged("EntitiesToShow");
-                        if (!SearchedHistory.Contains(SearchBox))
-                        {
-                            SearchedHistory.Add(SearchBox);
-                            OnPropertyChanged("SearchedHistory");
-                        }
                     }
                 }
             }

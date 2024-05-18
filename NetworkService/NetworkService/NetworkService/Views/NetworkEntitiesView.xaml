@@ -245,7 +245,7 @@
                     x:Name="SearchBox"
                     ToolTip="Search box"
                     Height="30" 
-                    Width="170" 
+                    Width="130" 
                     HorizontalAlignment="Left" 
                     IsEditable="True" 
                     HorizontalContentAlignment="Left"
@@ -257,7 +257,7 @@
                     FontWeight="Bold"
                     Cursor="Hand"
                     ToolTip="Search table"
-                    Width="100" 
+                    Width="87" 
                     HorizontalAlignment="Left" 
                     Margin="10 0 0 0" 
                     Template="{StaticResource RoundedButtonTemplate}" 
@@ -266,6 +266,25 @@
                     Background="#1E1F22"
                     BorderBrush="Black"
                     ></Button>
+                <Button 
+                    Command="{Binding SaveSearchCommand}" 
+                    Height="30" 
+                    Width="43"
+                    Cursor="Hand"
+                    ToolTip="Save search"
+                    HorizontalAlignment="Left" 
+                    Foreground="#fff"
+                    Background="#1E1F22"
+                    BorderBrush="Black"
+                    Margin="10 0 0 0" 
+                    Template="{StaticResource RoundedButtonTemplate}" >
+                        <fa5:SvgAwesome
+                        Height="15"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="#fff"
+                        Icon="Solid_Check"/>
+                </Button>
                 <Button 
                     Command="{Binding RefreshEntityCommand}" 
                     Height="30" 
