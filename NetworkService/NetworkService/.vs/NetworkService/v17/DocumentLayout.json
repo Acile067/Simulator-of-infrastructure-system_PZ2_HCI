@@ -1,40 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\acile\\desktop\\projekat hci\\simulator-of-infrastructure-system_pz2_hci\\networkservice\\networkservice\\networkservice\\views\\networkentitiesview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\views\\networkentitiesview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\acile\\desktop\\projekat hci\\simulator-of-infrastructure-system_pz2_hci\\networkservice\\networkservice\\networkservice\\views\\networkdisplayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\views\\networkdisplayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\acile\\desktop\\projekat hci\\simulator-of-infrastructure-system_pz2_hci\\networkservice\\networkservice\\networkservice\\views\\measurementgraphview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\views\\measurementgraphview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\acile\\desktop\\projekat hci\\simulator-of-infrastructure-system_pz2_hci\\networkservice\\networkservice\\networkservice\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\acile\\desktop\\projekat hci\\simulator-of-infrastructure-system_pz2_hci\\networkservice\\networkservice\\networkservice\\viewmodel\\measurementgraphviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\measurementgraphviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\acile\\desktop\\projekat hci\\simulator-of-infrastructure-system_pz2_hci\\networkservice\\networkservice\\networkservice\\viewmodel\\networkdisplayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\networkdisplayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\acile\\desktop\\projekat hci\\simulator-of-infrastructure-system_pz2_hci\\networkservice\\networkservice\\networkservice\\viewmodel\\networkentitiesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\networkentitiesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\acile\\desktop\\projekat hci\\simulator-of-infrastructure-system_pz2_hci\\networkservice\\networkservice\\networkservice\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -42,111 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MeasurementGraphView.xaml",
-              "DocumentMoniker": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\MeasurementGraphView.xaml",
-              "RelativeDocumentMoniker": "NetworkService\\Views\\MeasurementGraphView.xaml",
-              "ToolTip": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\MeasurementGraphView.xaml",
-              "RelativeToolTip": "NetworkService\\Views\\MeasurementGraphView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-31T14:37:19.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MeasurementGraphViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MeasurementGraphViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\MeasurementGraphViewModel.cs",
-              "ToolTip": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MeasurementGraphViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\MeasurementGraphViewModel.cs",
-              "ViewState": "AQIAAK0AAAAAAAAAAAAmwIIAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T14:35:24.58Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainWindowViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "ToolTip": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "ViewState": "AQIAAKMAAAAAAAAAAADwv7gAAABFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T14:31:10.999Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NetworkEntitiesView.xaml",
-              "DocumentMoniker": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\NetworkEntitiesView.xaml",
-              "RelativeDocumentMoniker": "NetworkService\\Views\\NetworkEntitiesView.xaml",
-              "ToolTip": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\NetworkEntitiesView.xaml",
-              "RelativeToolTip": "NetworkService\\Views\\NetworkEntitiesView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-31T14:26:50.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NetworkDisplayView.xaml",
-              "DocumentMoniker": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\NetworkDisplayView.xaml",
-              "RelativeDocumentMoniker": "NetworkService\\Views\\NetworkDisplayView.xaml",
-              "ToolTip": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\NetworkDisplayView.xaml",
-              "RelativeToolTip": "NetworkService\\Views\\NetworkDisplayView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-31T14:29:13.337Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "NetworkDisplayViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\NetworkDisplayViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\NetworkDisplayViewModel.cs",
-              "ToolTip": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\NetworkDisplayViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\NetworkDisplayViewModel.cs",
-              "ViewState": "AQIAAGcBAAAAAAAAAAAAwGUBAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T14:29:24.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "NetworkEntitiesViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\NetworkEntitiesViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\NetworkEntitiesViewModel.cs",
-              "ToolTip": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\NetworkEntitiesViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\NetworkEntitiesViewModel.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAIwDUAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T14:27:19.999Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "NetworkService\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\acile\\Desktop\\Projekat Hci\\Simulator-of-infrastructure-system_PZ2_HCI\\NetworkService\\NetworkService\\NetworkService\\MainWindow.xaml",
-              "RelativeToolTip": "NetworkService\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-31T14:26:39.318Z",
-              "EditorCaption": ""
             }
           ]
         }
