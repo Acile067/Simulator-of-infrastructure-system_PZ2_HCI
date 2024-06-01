@@ -72,6 +72,7 @@ namespace NetworkService.ViewModel
             if (!SearchedHistory.Contains(SearchBox) && SearchBox != null && SearchBox.Trim() != "")
             {
                 SearchedHistory.Add(SearchBox);
+                MessageBox.Show("Successfully added to history", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 OnPropertyChanged("SearchedHistory");
             }
         }

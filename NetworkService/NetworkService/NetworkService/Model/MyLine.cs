@@ -13,8 +13,8 @@ namespace NetworkService.Model
         private double x2;
         private double y2;
 
-        private int source;         // Index source canvas-a
-        private int destination;    // Index destination canvas-a
+        private int source;         
+        private int destination;    
 
         public double X1
         {
